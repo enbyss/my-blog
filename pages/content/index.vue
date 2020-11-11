@@ -10,12 +10,33 @@
     <p>
       I hope you like the way this page looks however. Someday I'll figure out what to put on here.
     </p>
+
+    <ul>
+      <li v-for="article of articles" :key="article.slug">
+        <NuxtLink :to="`/content/articles/${article.slug}`">
+          <div>
+            <h2 class="text-xl font-bold">{{article.title}}</h2>
+            <h3 class="italic">{{article.description}}</h3>
+          </div>
+        </NuxtLink>
+      </li>
+    </ul>
+
   </div>
 </template>
 
 <script>
 export default {
+  async asyncData({ $content, params }) {
+    const articles = await $content('articles', params.slug)
+      .only(['title', 'description', 'slug', 'author'])
+      .sortBy('createdAt', 'asc')
+      .fetch()
 
+    return {
+      articles
+    }
+  }
 }
 </script>
 
