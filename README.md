@@ -1,6 +1,14 @@
 # myblog
 
+This is a blog I'm working on for personal reasons. I decided to use this opportunity to teach myself some 
+frontend programming as well, just for fun. It's mostly powered on `Nuxt.js` and `TailwindCSS`, which are 
+the two most prominent things around this whole blog. Doesn't mean they're the only ones though.
+
+You can find my blog [~~here~~](nolink.com). (The blog doesn't exist yet.)
+
 ## Build Setup
+
+If, for some weird reason, you want to build my own blog locally, feel free to do the following:
 
 ```bash
 # install dependencies
