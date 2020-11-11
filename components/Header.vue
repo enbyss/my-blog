@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="transition duration-200 w-full bg-white border-b-2 dark:border-blue-700
-                  flex justify-center sticky top-0 h-16 items-center bg-white border-gray-200
+                  flex justify-center h-16 items-center bg-white border-gray-200
                   dark:bg-blue-900 dark:text-white">
       <NuxtLink :class="{'ml-5' : mobile}" to="/">
         <img src="~/assets/images/icon.png" class="h-10 mr-2 shadow-2xl rounded-full" style="box-shadow: 0 0 10px #3e8eff;"/>
