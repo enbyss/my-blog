@@ -1,0 +1,19 @@
+.blue-btn {
+  @apply bg-blue-400 text-white transition duration-200;
+
+  &:hover {
+    @apply bg-blue-500;
+  }
+
+  &:active {
+    @apply bg-blue-600;
+  }
+}
+
+.btn {
+  @apply py-1 px-2 rounded-md;
+}
+
+.box-btn {
+  @apply py-1 px-2;
+}
