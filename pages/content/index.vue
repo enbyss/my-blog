@@ -1,31 +1,26 @@
 <template>
   <div class="flex flex-col justify-center text-center dark:text-white">
     <h1 class="title text-6xl font-bold">Content.</h1>
-    <ul>
-      <li v-for="article of articles" :key="article.slug">
-        <NuxtLink :to="`/content/articles/${article.slug}`">
-          <div>
-            <h2 class="text-xl font-bold">{{article.title}}</h2>
-            <h3 class="italic">{{article.description}}</h3>
-          </div>
-        </NuxtLink>
-      </li>
-    </ul>
-
+    <ArticleListings :articles="articles" />
   </div>
 </template>
 
 <script>
+import ArticleListings from "@/components/ArticleListings.vue";
+
 export default {
   async asyncData({ $content, params }) {
     const articles = await $content('articles', params.slug)
-      .only(['title', 'description', 'slug', 'author'])
+      .only(['title', 'description', 'slug', 'createdAt', 'readingTime', 'tags'])
       .sortBy('createdAt', 'asc')
       .fetch()
 
     return {
       articles
     }
+  },
+  components : {
+    ArticleListings
   },
   head() {
     return {
