@@ -39,7 +39,7 @@ export default {
 .article-link {
   @apply rounded-2xl text-left shadow-xl border-4 border-pink-500 transition duration-200;
   background: linear-gradient(90deg, #ff6397, #8f63ff);
-  width: 400px;
+  width: 300px;
   overflow: hidden;
 
   &:hover {
@@ -90,6 +90,8 @@ export default {
 }
 
 @screen sm {
-  width: 500px;
+  .article-link {
+    width: 500px;
+  }
 }
 </style>
