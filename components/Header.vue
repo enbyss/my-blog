@@ -59,9 +59,13 @@ export default {
   name: 'app',
   data() {
     return {
-      darkMode: true,
       mobile: true,
       showMenu: false,
+    }
+  },
+  computed: {
+    darkMode() {
+      return this.$store.state.darkmode;
     }
   },
   watch: {
@@ -87,12 +91,17 @@ export default {
       this.mobile = window.innerWidth <= 863;
     },
     toggleDarkMode() {
-      this.darkMode = !this.darkMode;
       this.$root.$emit('mode-change', this.darkMode);
+      this.$store.commit('toggleDarkmode');
     }
   },
   mounted() {
-    document.documentElement.classList.add("mode-dark");
+    if(this.darkMode){
+      document.documentElement.classList.add("mode-dark");
+    }
+    else {
+      document.documentElement.classList.remove("mode-dark");
+    }
   }
 }
 </script>
