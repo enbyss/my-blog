@@ -15,7 +15,18 @@
 
 <script>
 export default {
-
+  head() {
+    return {
+      title: "Welcome.",
+      meta: [
+        {
+          hid: 'description',
+          name: "description",
+          content: "Welcome to my own personal website. I almost said hell there.",
+        }
+      ]
+    }
+  }
 }
 </script>
 

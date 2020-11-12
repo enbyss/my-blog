@@ -15,7 +15,18 @@
 
 <script>
 export default {
-
+  head() {
+    return {
+      title: "Contact.",
+      meta: [
+        {
+          hid: 'description',
+          name: "description",
+          content: "Unfortunately, this page is incomplete. Someday it won't be though.",
+        }
+      ]
+    }
+  }
 }
 </script>
 

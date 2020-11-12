@@ -13,6 +13,18 @@ export default {
   },
   components : {
     BaseArticle
+  },
+  head() {
+    return {
+      title: this.article.title,
+      meta: [
+        {
+          hid: 'description',
+          name: "description",
+          content: this.article.description,
+        }
+      ]
+    }
   }
 }
 </script>

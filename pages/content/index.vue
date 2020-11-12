@@ -26,6 +26,18 @@ export default {
     return {
       articles
     }
+  },
+  head() {
+    return {
+      title: "Content.",
+      meta: [
+        {
+          hid: 'description',
+          name: "description",
+          content: "This is where I put all the stuff I've written. Pretty barren right now.",
+        }
+      ]
+    }
   }
 }
 </script>
