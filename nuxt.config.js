@@ -24,6 +24,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -51,6 +52,15 @@ export default {
     '@nuxtjs/style-resources',
   ],
 
+  hooks: {
+    'content:file:beforeInsert' : (document) => {
+      if (document.extension === '.md') {
+        const { text } = require('reading-time')(document.text);
+        document.readingTime = text;
+      }
+    }
+  },
+
   styleResources: {
       scss: [
           'assets/scss/main.scss',
@@ -71,5 +81,17 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  router: {
+    scrollBehavior(to) {
+      if (to.hash) {
+        return window.scrollTo({
+          top: document.querySelector(to.hash).offsetTop,
+          behavior: 'smooth'
+        })
+      }
+      return window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 }
