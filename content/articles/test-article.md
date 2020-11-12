@@ -1,6 +1,6 @@
 ---
-title: A test article.
-description: There's some metadata here.
+title: This is a test article.
+description: Its entire purpose is to check for any formatting issues that may be present.
 ---
 
 <p className="lead">
