@@ -2,7 +2,9 @@
   <div class="article-link">
     <NuxtLink :to="`/content/articles/${article.slug}`">
       <div>
+
         <h2 class="text-xl font-bold">{{article.title}}</h2>
+
         <h3 class="created-on">
           {{article.createdAt | formatDate}}
 
@@ -11,13 +13,16 @@
             {{article.readingTime}}
           </span>
         </h3>
+        
         <h3 class="italic">{{article.description}}</h3>
+
 
         <h3 class="tags">
           <span class="tag" v-for="(tag, index) in article.tags" :key="index">
             {{tag}}
           </span>
         </h3>
+
       </div>
     </NuxtLink>
   </div>

@@ -1,5 +1,6 @@
 <template>
   <div class="transition duration-200" :class="{'opacity-0': processTransition}">
+    
     <ul>
       <li class="m-5" v-for="article of paginatedArticles" :key="article.slug">
         <ArticleLink :article="article" />

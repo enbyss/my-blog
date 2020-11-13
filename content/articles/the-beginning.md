@@ -3,6 +3,7 @@ title: The Beginning, and How It Came To Be.
 description: This is the start of something new. This something? Just a blog by some random schmuck. This is (maybe) how it was made.
 tags: ["tech", "tutorial-like", "blogging"]
 showtoc: true
+type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
 ---
 
 Do you like how this site looks? I do too. I spent a lot of time working on it though, and it

@@ -29,7 +29,7 @@
           <font-awesome-icon v-if="darkMode" :icon="['fas', 'moon']" />
         </button>
 
-        <button v-if="mobile" @click="showMenu = !showMenu;" class="ml-5 rounded-full text-xl">
+        <button ref="menuButton" v-if="mobile" @click="showMenu = !showMenu;" class="ml-5 rounded-full text-xl">
           <font-awesome-icon :icon="['fas', 'bars']" />
         </button>
       </div>
@@ -38,7 +38,11 @@
 
     <!-- Menu on mobile. -->
     <transition name="fade">
-      <ul v-if="mobile & showMenu" class="burger-menu-list transform origin-top absolute w-full bg-gray-100 text-gray-700 dark:bg-megadark dark:text-white font-bold text-2xl">
+      <ul
+        v-if="mobile & showMenu"
+        v-closable="{handler: 'onCloseMenu', exclude: ['menuButton']}"
+        @click="onCloseMenu"
+        class="burger-menu-list transform origin-top absolute w-full bg-gray-100 text-gray-700 dark:bg-megadark dark:text-white font-bold text-2xl">
         <li>
           <NuxtLink class="block w-full px-5" to="/content">Content</NuxtLink>
         </li>
@@ -93,6 +97,9 @@ export default {
     toggleDarkMode() {
       this.$root.$emit('mode-change', this.darkMode);
       this.$store.commit('toggleDarkmode');
+    },
+    onCloseMenu() {
+      this.showMenu = false;
     }
   },
   mounted() {
