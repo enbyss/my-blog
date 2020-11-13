@@ -3,6 +3,7 @@ title: The Beginning, and How It Came To Be.
 description: This is the start of something new. This something? Just a blog by some random schmuck. This is (maybe) how it was made.
 tags: ["tech", "tutorial-like", "blogging"]
 showtoc: true
+category: articles # name of directory
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
 ---
 

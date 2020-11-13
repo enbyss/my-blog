@@ -1,24 +1,25 @@
 <template>
-  <article class="my-10 flex flex-col justify-center article-content" :class="darkMode ? 'prose-dark' : 'prose-light'">
-    <h1 class="mx-auto w-10/12 lg:w-7/12 text-5xl font-bold italic">{{article.title}}</h1>
-    <p class="mx-auto w-10/12 lg:w-7/12 text-xl mb-3 italic">{{article.description}}</p>
+  <document class="my-10 flex flex-col justify-center document-content" :class="darkMode ? 'prose-dark' : 'prose-light'">
+    <h1 class="mx-auto w-10/12 lg:w-7/12 text-5xl font-bold italic">{{document.title}}</h1>
+    <p class="mx-auto w-10/12 lg:w-7/12 text-xl mb-3 italic">{{document.description}}</p>
 
-    <p class="mx-auto w-10/12 lg:w-7/12 text-lg font-normal"><span class="font-bold">Created on:</span> {{article.createdAt | formatDate}}</p>
-    <p v-if="article.updatedAt !== article.createdAt" class="mx-auto w-10/12 lg:w-7/12 text-lg font-normal"><span class="font-bold">
-      Updated on:</span> {{article.updatedAt | formatDate}}
+    <p class="mx-auto w-10/12 lg:w-7/12 text-lg font-normal"><span class="font-bold">Created on:</span> {{document.createdAt | formatDate}}</p>
+    <p v-if="document.updatedAt !== document.createdAt" class="mx-auto w-10/12 lg:w-7/12 text-lg font-normal"><span class="font-bold">
+      Updated on:</span> {{document.updatedAt | formatDate}}
     </p>
 
     <p class="mx-auto w-10/12 lg:w-7/12 text-lg font-normal mt-3">
       <font-awesome-icon class="mr-1" :icon="['fas', 'clock']" />
-      {{article.readingTime}}
+      {{document.readingTime}}
     </p>
 
     <hr class="mx-auto w-10/12 lg:w-7/12 my-8 dark:border-blue-500 border-blue-800"/>
 
-    <div v-if="article.showtoc" class="flex items-center mx-auto w-10/12 lg:w-7/12">
+    <div v-if="document.showtoc" class="flex md:flex-row flex-col items-center mx-auto w-10/12 lg:w-7/12">
+      <h1 class="toc-label px-5 text-3xl z-20 rounded-xl mr-0 md:-mr-2 dark:border-blue-700 border-pink-700 border-8 w-auto">Table of Contents</h1>
       <ul class="toc-list dark:border-blue-500 border-pink-500 rounded-xl border-8 w-96 p-3 my-3">
         <li
-          v-for="link of article.toc"
+          v-for="link of document.toc"
           :key="link.id"
           :class="{ 'toc2': link.depth === 2, 'toc3': link.depth === 3 }"
           class="text-lg"
@@ -26,21 +27,19 @@
           <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
         </li>
       </ul>
-      <h1 class="toc-label px-5 text-3xl rounded-xl -ml-2 dark:border-blue-700 border-pink-700 border-8 w-auto">Table of Contents</h1>
     </div>
 
+    <hr v-if="document.showtoc" class="mx-auto w-10/12 lg:w-7/12 my-8 dark:border-blue-500 border-blue-800"/>
+
     <div class="mx-auto mb-12 w-10/12 lg:w-7/12">
-      <nuxt-content class="prose-xl" :document="article" />
+      <nuxt-content class="prose-xl" :document="document" />
     </div>
-  </article>
+  </document>
 </template>
 
 <script>
 export default {
-  props: ['article'],
-  mounted() {
-    this.$root.$on('mode-change', (darkMode) => this.darkMode = darkMode);
-  },
+  props: ['document'],
   computed: {
     darkMode() {
       return this.$store.state.darkmode;
@@ -85,7 +84,7 @@ export default {
   }
 }
 
-.article-content.prose-dark {
+.document-content.prose-dark {
   h1, h2, h3, h4 {
     color: white;
     font-weight: bold;
@@ -157,7 +156,7 @@ export default {
   }
 }
 
-.article-content.prose-light {
+.document-content.prose-light {
   h1, h2, h3, h4 {
     color: black;
     font-weight: bold;

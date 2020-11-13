@@ -1,5 +1,5 @@
 <template>
-  <BaseDocument :document="article" />
+  <BaseDocument :document="review" />
 </template>
 
 <script>
@@ -7,21 +7,21 @@ import BaseDocument from "@/components/BaseDocument.vue";
 
 export default {
   async asyncData({ $content, params }) {
-    const article = await $content('articles', params.slug).fetch()
+    const review = await $content('reviews', params.slug).fetch()
 
-    return { article }
+    return { review }
   },
   components : {
     BaseDocument
   },
   head() {
     return {
-      title: this.article.title,
+      title: this.review.title,
       meta: [
         {
           hid: 'description',
           name: "description",
-          content: this.article.description,
+          content: this.review.description,
         }
       ]
     }

@@ -2,13 +2,13 @@
   <div class="flex flex-col justify-center text-center dark:text-white">
     <h1 class="title text-6xl font-bold">Welcome.</h1>
     <p>
-      Welcome to my humble blog. This page is currently empty, <b>particularly</b> because I don't have much of an idea for what to put on here.
+      This is my own space where I write stuff, post it, and over-design the <i>hell</i> out of everything.
     </p>
     <p>
-      From the links above, a lot of them <b><i>work</i></b>, but their pages aren't fully working yet. Do forgive me, I am indeed trying to be a good host.
+      Someday I'll make a halfway decent homepage, but until then you're stuck staring at this meaningless text.
     </p>
     <p>
-      I hope you like the way this page looks however. Someday I'll figure out what to put on here.
+      In the meantime, feel free to click on any links in the <b>header</b>. I'm sure you'll find something there.
     </p>
   </div>
 </template>

@@ -1,24 +1,24 @@
 <template>
-  <div class="article-link">
-    <NuxtLink :to="`/content/articles/${article.slug}`">
+  <div class="document-link">
+    <NuxtLink :to="`/content/${document.category}/${document.slug}`">
       <div>
 
-        <h2 class="text-xl font-bold">{{article.title}}</h2>
+        <h2 class="text-xl font-bold">{{document.title}}</h2>
 
         <h3 class="created-on">
-          {{article.createdAt | formatDate}}
+          {{document.createdAt | formatDate}}
 
           <span class="float-right">
             <font-awesome-icon class="mr-1" :icon="['fas', 'clock']" />
-            {{article.readingTime}}
+            {{document.readingTime}}
           </span>
         </h3>
-        
-        <h3 class="italic">{{article.description}}</h3>
+
+        <h3 class="italic">{{document.description}}</h3>
 
 
         <h3 class="tags">
-          <span class="tag" v-for="(tag, index) in article.tags" :key="index">
+          <span class="tag" v-for="(tag, index) in document.tags" :key="index">
             {{tag}}
           </span>
         </h3>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  props: ['article'],
+  props: ['document'],
   filters: {
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric'};
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.article-link {
+.document-link {
   @apply rounded-2xl text-left shadow-xl border-4 border-pink-500 transition duration-200;
   background: linear-gradient(90deg, #ff6397, #8f63ff);
   width: 300px;
@@ -74,7 +74,7 @@ export default {
 }
 
 .mode-dark {
-  .article-link {
+  .document-link {
     background: linear-gradient(90deg, #ff276f, #5c1cff);
   }
 
@@ -95,7 +95,7 @@ export default {
 }
 
 @screen sm {
-  .article-link {
+  .document-link {
     width: 500px;
   }
 }

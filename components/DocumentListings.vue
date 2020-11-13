@@ -1,9 +1,9 @@
 <template>
   <div class="transition duration-200" :class="{'opacity-0': processTransition}">
-    
+
     <ul>
-      <li class="m-5" v-for="article of paginatedArticles" :key="article.slug">
-        <ArticleLink :article="article" />
+      <li class="m-5" v-for="document of paginateddocuments" :key="document.slug">
+        <DocumentLink :document="document" />
       </li>
     </ul>
 
@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import ArticleLink from "@/components/ArticleLink.vue";
+import DocumentLink from "@/components/DocumentLink.vue";
 
 export default {
-  props: ['articles'],
+  props: ['documents'],
   components : {
-    ArticleLink
+    DocumentLink
   },
   data() {
     return {
@@ -36,16 +36,16 @@ export default {
     }
   },
   computed: {
-    articleAmnt() {
-      return this.articles.length;
+    documentAmnt() {
+      return this.documents.length;
     },
     pageAmnt() {
-      return Math.ceil(this.articleAmnt / this.pageSize)
+      return Math.ceil(this.documentAmnt / this.pageSize)
     },
-    paginatedArticles() {
+    paginateddocuments() {
       let startingPage = (this.page-1)*this.pageSize;
-      let endingPage = Math.min((this.page)*this.pageSize, this.articleAmnt);
-      return this.articles.slice(startingPage, endingPage);
+      let endingPage = Math.min((this.page)*this.pageSize, this.documentAmnt);
+      return this.documents.slice(startingPage, endingPage);
     }
   },
   methods: {

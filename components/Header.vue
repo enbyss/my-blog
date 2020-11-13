@@ -19,7 +19,6 @@
       <div v-if="!mobile">
         <NuxtLink class="header-link hover:bg-blue-300 hover:text-blue-800" to="/content">Content</NuxtLink>
         <NuxtLink class="header-link hover:bg-red-300 hover:text-red-800" to="/about">About</NuxtLink>
-        <NuxtLink class="header-link hover:bg-yellow-300 hover:text-yellow-800" to="/contact">Contact</NuxtLink>
       </div>
 
       <!-- Buttons for dark mode and potentially the hamburger menu. -->
@@ -48,9 +47,6 @@
         </li>
         <li>
           <NuxtLink class="block w-full px-5" to="/about">About</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink class="block w-full px-5" to="/contact">Contact</NuxtLink>
         </li>
       </ul>
     </transition>
