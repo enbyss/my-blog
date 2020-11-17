@@ -2,6 +2,7 @@
   <div class="flex flex-col justify-center text-center dark:text-white">
     <h1 class="title text-6xl font-bold">Reviews.</h1>
     <DocumentListings :documents="reviews" />
+    <ReviewScore />
   </div>
 </template>
 

@@ -1,9 +1,13 @@
 <template>
-  <BaseDocument :document="review" />
+  <div>
+    <BaseDocument :document="review" />
+    <ReviewScore :score="review.rating" :summary="review.ratingSummary" />
+  </div>
 </template>
 
 <script>
 import BaseDocument from "@/components/BaseDocument.vue";
+import ReviewScore from "@/components/ReviewScore.vue";
 
 export default {
   async asyncData({ $content, params }) {
@@ -12,7 +16,8 @@ export default {
     return { review }
   },
   components : {
-    BaseDocument
+    BaseDocument,
+    ReviewScore
   },
   head() {
     return {
