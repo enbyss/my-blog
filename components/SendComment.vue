@@ -6,23 +6,23 @@
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      @submit.prevent="'onSubmit'"
+      @submit.prevent="'submitComment'"
     >
       <input type="hidden" name="form-name" :value="slug + '-comment-submit'" />
       <input
         class="w-full mb-4 p-3 text-xl font-bold rounded-lg dark:bg-gray-800 bg-gray-300 dark:text-white"
         v-model="comment.name"
-        name="commenter-name"
+        name="name"
         type="text"
         placeholder="Name"
       />
       <textarea
         class="w-full mb-4 p-3 text-lg rounded-lg dark:bg-gray-800 bg-gray-300 dark:text-white"
         v-model="comment.message"
-        name="comment-body"
+        name="comment"
         placeholder="Comment"
       />
-      <button @click="submitComment()" class="w-full transition duration-200 p-3 text-xl font-bold rounded-lg dark:bg-purple-800
+      <button class="w-full transition duration-200 p-3 text-xl font-bold rounded-lg dark:bg-purple-800
          dark-hover:bg-purple-600 bg-purple-300 hover:bg-purple-500 dark:text-white" type="submit">Submit</button>
     </form>
   </div>
@@ -42,19 +42,24 @@ export default {
   props: ["slug"],
   data() {
     return {
-      comment: {},
+      comment: {
+        name: '',
+        comment: ''
+      },
       loading: false
     }
   },
   methods: {
     encode(data) {
-      return Object.keys(data)
-        .map(
-          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-        )
-        .join("&");
+      const formData = new FormData();
+
+      for (const key of Object.keys(data)) {
+          formData.append(key, data[key]);
+      }
+
+      return formData;
     },
-    submitComment() {
+    submitComment(e) {
         let formData = new URLSearchParams();
 
         const axiosConfig = {
@@ -62,13 +67,14 @@ export default {
         };
 
         this.$axios.post(
-          '/',
+          location.href,
           this.encode({
-            "form-name": this.slug + '-comment-submit',
+            "form-name": e.target.getAttribute("name"),
             ...this.comment
           }),
           axiosConfig
-        ).then((response) => {
+        )
+        .then((response) => {
           console.log("Form successfully submitted.");
         }).catch((err) => {
           console.error(err);
