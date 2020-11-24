@@ -4,7 +4,7 @@ description: A Yakuza game that's not a brawler? I for one was disappointed. At 
 tags: ["yakuza", "rpg", "game"]
 showtoc: false
 category: reviews
-rating: 9.5
+rating: 9.0
 ratingSummary: "This game nears absolute perfection, with its only problems being incredibly minor. Definitely an experience you shouldn't miss."
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
 ---
