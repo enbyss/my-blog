@@ -62,7 +62,7 @@ export default {
         };
 
         this.$axios.post(
-          'https://enbyss.com/',
+          '/',
           this.encode({
             "form-name": this.slug + '-comment-submit',
             ...this.comment
