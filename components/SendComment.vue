@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="text-3xl dark:text-white font-bold mb-2">Comments [doesn't work yet]</h2>
-    <form :name="slug + '-comment-submit'" data-netlify="true" method="POST" @submit.prevent="'onSubmit'">
+    <form :name="slug + '-comment-submit'" netlify>
       <input class="w-full mb-4 p-3 text-xl font-bold rounded-lg dark:bg-gray-800 bg-gray-300 dark:text-white" v-model="comment.name" name="name" type="text" placeholder="Name" />
       <textarea class="w-full mb-4 p-3 text-lg rounded-lg dark:bg-gray-800 bg-gray-300 dark:text-white" v-model="comment.message" name="comment" placeholder="Comment" />
       <button class="w-full transition duration-200 p-3 text-xl font-bold rounded-lg dark:bg-purple-800
