@@ -6,7 +6,7 @@
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      @submit.prevent="'submitComment'"
+      @submit.prevent="submitComment"
     >
       <input type="hidden" name="form-name" :value="slug + '-comment-submit'" />
       <input
