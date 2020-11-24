@@ -49,7 +49,7 @@ export default {
   methods: {
     submitComment() {
         let formData = new URLSearchParams();
-        axios.post('/', formData).then((response) => {
+        this.$axios.post('/', formData).then((response) => {
           console.log("Form successfully submitted.");
         }).catch((err) => {
           console.error(err);
