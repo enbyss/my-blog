@@ -6,6 +6,7 @@
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
+      @submit.prevent="'onSubmit'"
     >
       <input type="hidden" name="form-name" :value="slug + '-comment-submit'" />
       <input
@@ -21,7 +22,7 @@
         name="comment-body"
         placeholder="Comment"
       />
-      <button class="w-full transition duration-200 p-3 text-xl font-bold rounded-lg dark:bg-purple-800
+      <button @click="submitComment()" class="w-full transition duration-200 p-3 text-xl font-bold rounded-lg dark:bg-purple-800
          dark-hover:bg-purple-600 bg-purple-300 hover:bg-purple-500 dark:text-white" type="submit">Submit</button>
     </form>
   </div>
@@ -47,7 +48,12 @@ export default {
   },
   methods: {
     submitComment() {
-
+        let formData = new URLSearchParams();
+        axios.post('/', formData).then((response) => {
+          console.log("Form successfully submitted.");
+        }).catch((err) => {
+          console.error(err);
+        });
     }
   }
 }
