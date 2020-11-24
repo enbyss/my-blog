@@ -47,9 +47,28 @@ export default {
     }
   },
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&");
+    },
     submitComment() {
         let formData = new URLSearchParams();
-        this.$axios.post('/', formData).then((response) => {
+
+        const axiosConfig = {
+            header: { "Content-Type": "application/x-www-form-urlencoded" }
+        };
+
+        this.$axios.post(
+          '/',
+          this.encode({
+            "form-name": this.slug + '-comment-submit',
+            ...this.comment
+          }),
+          axiosConfig
+        ).then((response) => {
           console.log("Form successfully submitted.");
         }).catch((err) => {
           console.error(err);
