@@ -1,7 +1,13 @@
 <template>
   <div>
     <h2 class="text-3xl dark:text-white font-bold mb-2">Comments [doesn't work yet]</h2>
-    <form :name="slug + '-comment-submit'" method="POST" data-netlify="true">
+    <form
+      :name="slug + '-comment-submit'"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" :value="slug + '-comment-submit'" />
       <input
         class="w-full mb-4 p-3 text-xl font-bold rounded-lg dark:bg-gray-800 bg-gray-300 dark:text-white"
         v-model="comment.name"
