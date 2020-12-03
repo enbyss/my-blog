@@ -4,6 +4,9 @@
     <h2 class="text-3xl mx-auto w-10/12">
       Hello, I'm <b>Enbyss</b>. My pronouns are <b>they/them</b> and this is... well, <i>my site.</i>
     </h2>
+    <div class="text-md">
+      Check the header for different pages!
+    </div>
     <p>
       Basically, this place serves as a playground or <i>library</i> in a sense, of things that I
       may be working on. Some of this includes writing in the form of <i>informal reviews</i> (as
@@ -62,6 +65,22 @@ svg:hover {
 
 .icon-bar > a {
   @apply mx-5;
+}
+
+#twitter-icon, #youtube-icon, #twitch-icon {
+  transition: all .2s ease-in-out;
+}
+
+#twitter-icon {
+  filter: drop-shadow( 0 0 10px #1DA1F2);
+}
+
+#youtube-icon {
+  filter: drop-shadow( 0 0 10px red);
+}
+
+#twitch-icon {
+  filter: drop-shadow( 0 0 10px #6441A4);
 }
 
 #twitter-icon:hover {
