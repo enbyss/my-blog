@@ -29,7 +29,7 @@
       foot forward in a sense, and be consistently <b>me.</b> Mostly because that's the most comfortable way to act for me, and because <i>consistency helps.</i>
     </p>
     <p>
-      The latter however is because editing is hard. I'm workin' on that.
+      The latter however is because editing is hard. I'm workin' on that. Trying to.
     </p>
   </div>
 </template>
