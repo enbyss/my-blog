@@ -6,6 +6,7 @@ showtoc: false
 category: reviews
 rating: 9.5
 ratingSummary: "The story is immensely powerful, the gameplay is interesting, and the music breathes life into the world of LISA: The Painful."
+metaimage: 'lisa-the-painful.png'
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
 ---
 

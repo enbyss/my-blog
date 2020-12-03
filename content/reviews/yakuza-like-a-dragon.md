@@ -6,6 +6,7 @@ showtoc: false
 category: reviews
 rating: 9.0
 ratingSummary: "This game nears absolute perfection, with its only problems being incredibly minor. Definitely an experience you shouldn't miss."
+metaimage: 'yakuza-like-a-dragon.jpg'
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
 ---
 

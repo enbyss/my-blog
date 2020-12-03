@@ -4,6 +4,7 @@ description: This is the start of something new. This something? Just a blog by 
 tags: ["tech", "tutorial-like", "blogging"]
 showtoc: true
 category: articles # name of directory
+metaimage: 'the-beginning.png'
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
 ---
 

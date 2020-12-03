@@ -1,5 +1,7 @@
 <template>
-  <BaseDocument :document="article" />
+  <div>
+    <BaseDocument :document="article" />
+  </div>
 </template>
 
 <script>
@@ -8,8 +10,9 @@ import BaseDocument from "@/components/BaseDocument.vue";
 export default {
   async asyncData({ $content, params }) {
     const article = await $content('articles', params.slug).fetch()
+    const image = require('~/assets/content-images/' + article.metaimage);
 
-    return { article }
+    return { article, image }
   },
   components : {
     BaseDocument
@@ -25,11 +28,15 @@ export default {
         },
         {
           property: 'og:title',
-          content: this.review.title,
+          content: this.article.title,
         },
         {
           property: 'og:description',
-          content: this.review.description,
+          content: this.article.description,
+        },
+        {
+          property: 'og:image',
+          content: this.image
         },
       ]
     }

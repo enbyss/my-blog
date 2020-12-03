@@ -11,9 +11,10 @@ import ReviewScore from "@/components/ReviewScore.vue";
 
 export default {
   async asyncData({ $content, params }) {
-    const review = await $content('reviews', params.slug).fetch()
+    const review = await $content('reviews', params.slug).fetch();
+    const image = require('~/assets/content-images/' + review.metaimage);
 
-    return { review }
+    return { review, image }
   },
   components : {
     BaseDocument,
@@ -35,6 +36,10 @@ export default {
         {
           property: 'og:description',
           content: this.review.description,
+        },
+        {
+          property: 'og:image',
+          content: this.image
         },
       ]
     }
