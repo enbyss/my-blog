@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-center text-center dark:text-white">
     <h1 class="title text-6xl font-bold">Yo.</h1>
     <h2 class="text-3xl mx-auto w-10/12">
-      Hello, I'm <b>Enbyss</b>. This is, well, <i>my site.</i>
+      Hello, I'm <b>Enbyss</b>. My pronouns are <b>they/them</b> and this is... well, <i>my site.</i>
     </h2>
     <p>
       Basically, this place serves as a playground or <i>library</i> in a sense, of things that I
