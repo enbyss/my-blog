@@ -18,12 +18,18 @@
       <!-- Links to other pages. -->
       <div v-if="!mobile">
         <NuxtLink class="header-link hover:bg-blue-300 hover:text-blue-800" to="/content">Content</NuxtLink>
-        <NuxtLink class="header-link hover:bg-red-300 hover:text-red-800" to="/about">About</NuxtLink>
+        <!-- <NuxtLink class="header-link hover:bg-red-300 hover:text-red-800" to="/about">About</NuxtLink> -->
       </div>
 
       <!-- Buttons for dark mode and potentially the hamburger menu. -->
-      <div :class="{'ml-auto mr-5' : mobile}">
-        <button class="transition duration-200 dark-hover:bg-gray-800 hover:bg-gray-200 w-10 h-10 ml-3 rounded-full text-xl" @click="toggleDarkMode()">
+      <div :class="{'ml-auto mr-5' : mobile}" class="flex">
+        <span class="icon-bar h-10 inline-block mx-3">
+          <a id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
+          <a id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
+          <a id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+        </span>
+
+        <button class="transition duration-200 dark-hover:bg-gray-800 hover:bg-gray-200 w-10 h-10 rounded-full text-xl" @click="toggleDarkMode()">
           <font-awesome-icon v-if="!darkMode" :icon="['fas', 'sun']" />
           <font-awesome-icon v-if="darkMode" :icon="['fas', 'moon']" />
         </button>
@@ -110,6 +116,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  svg:hover {
+    cursor: pointer;
+  }
+
+  .icon-bar > a {
+    @apply transition duration-200 rounded-full w-10 h-10 text-xl p-2 inline-flex items-center flex-row;
+  }
+
+  .icon-bar > a > svg {
+    @apply w-6 h-6;
+  }
+
+  #twitter-icon:hover {
+    background: #1DA1F2;
+  }
+
+  #youtube-icon:hover {
+    background: red;
+  }
+
+  #twitch-icon:hover {
+    background: #6441A4;
+  }
+
   .header-link {
     @apply transition duration-200 px-4 py-2 rounded-xl mr-1;
   }

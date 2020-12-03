@@ -1,23 +1,35 @@
 <template>
   <div class="flex flex-col justify-center text-center dark:text-white">
     <h1 class="title text-6xl font-bold">Yo.</h1>
+    <h2 class="text-3xl mx-auto w-10/12">
+      Hello, I'm <b>Enbyss</b>. This is, well, <i>my site.</i>
+    </h2>
     <p>
-      Hello, I'm <b>Enbyss.</b> I do a lot of things, but this website here is more of a personal project
-      for me to learn about creating a site, and program as a hobby.
+      Basically, this place serves as a playground or <i>library</i> in a sense, of things that I
+      may be working on. Some of this includes writing in the form of <i>informal reviews</i> (as
+      I am not a professional reviewer), <i>articles</i> (<i>blogposts</i> is a more accurate term,
+      but yeah), and possibly more in the future.
     </p>
     <p>
-      On here, I plan to be doing and hosting many things, but for the time being I'm mostly focused on creating
-      <i>written</i> content, such as reviews and articles. As time passes, the site will grow <i>(hopefully)</i>
-      so feel free to check back later as well.
+      I have quite a lot of hobbies, you could say. <b>Too many</b>. Which also means that I'm all over
+      the place. The <b>main</b> things I do, mostly, are <i>stream games</i>, <i>edit youtube videos (kind of)</i>,
+      and <i>program stuff</i>.
     </p>
     <p>
-      As for links, I do have a twitter <a href="https://twitter.com/enbyss_">here.</a> I also have two youtube channels,
-      one for <a href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw">edited content</a> that I admittedly don't use much,
-      and one where I upload my <a href="https://www.youtube.com/channel/UC88yu6qLzwoM53aXLGHiKJQ">full streams.</a> Speaking of streaming,
-      <a href="https://www.twitch.tv/enbyss_">here's my twitch.</a>
+      This website, honestly, should be proof enough of how into programming I am. As for youtube and streaming, you could
+      see as much in the links below this paragraph.
+    </p>
+    <p class="icon-bar">
+      <a href="https://twitter.com/enbyss_"><font-awesome-icon id="twitter-icon" :icon="['fab', 'twitter']" size="3x" /></a>
+      <a href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon id="youtube-icon" :icon="['fab', 'youtube']" size="3x" /></a>
+      <a href="https://www.twitch.tv/enbyss_"><font-awesome-icon id="twitch-icon" :icon="['fab', 'twitch']" size="3x" /></a>
     </p>
     <p>
-      Feel free to follow my links and check out my stuff above! Also feel free to browse this site. I'm kinda proud of it.
+      You may see that my twitter is less than <b>professional</b>, and my youtube is a bit <b>inactive</b>. The former is because I want to put an honest
+      foot forward in a sense, and be consistently <b>me.</b> Mostly because that's the most comfortable way to act for me, and because <i>consistency helps.</i>
+    </p>
+    <p>
+      The latter however is because editing is hard. I'm workin' on that.
     </p>
   </div>
 </template>
@@ -41,12 +53,32 @@ export default {
 
 <style scoped lang="scss">
 p {
-  @apply text-2xl w-10/12 mx-auto my-5;
+  @apply text-xl w-10/12 mx-auto my-5;
+}
+
+svg:hover {
+  cursor: pointer;
+}
+
+.icon-bar > a {
+  @apply mx-5;
+}
+
+#twitter-icon:hover {
+  color: #1DA1F2;
+}
+
+#youtube-icon:hover {
+  color: red;
+}
+
+#twitch-icon:hover {
+  color: #6441A4;
 }
 
 @screen lg {
   p {
-    @apply w-7/12;
+    @apply w-5/12;
   }
 }
 </style>
