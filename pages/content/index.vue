@@ -1,11 +1,15 @@
 <template>
   <div class="flex flex-col justify-center text-center dark:text-white">
-    <h1 class="title text-6xl font-bold">Content.</h1>
+    <h1 class="title text-6xl font-bold">Pick a category.</h1>
 
-    <NuxtLink class="category-banner" v-for="(category, index) of categories" :key="index" :to="category.link" :class="category.classname">
-      <h1>{{category.name}}</h1>
-      <h2>{{category.description}}</h2>
-    </NuxtLink>
+    <ul class="w-full mx-auto text-center">
+      <li class="category-banner-container" :class="category.classname" v-for="(category, index) of categories" :key="index">
+        <NuxtLink class="category-banner" :to="category.link">
+          <h1>{{category.name}}</h1>
+          <h2>{{category.description}}</h2>
+        </NuxtLink>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -53,8 +57,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.category-banner {
-  @apply text-left px-5 pt-2 pb-5 w-full;
+
+.category-banner-container {
+  @apply text-left px-5 m-3 pt-2 pb-5 rounded-3xl;
+  width: 400px;
+  display: inline-block;
   color: white;
   transition: all .2s ease-in-out;
 
@@ -115,11 +122,11 @@ export default {
 @screen sm {
   .category-banner {
     h1 {
-      font-size: 90pt;
+      font-size: 50pt;
     }
     h2 {
       font-size: 20pt;
-      margin-top: -30pt;
+      margin-top: -10pt;
     }
   }
 }
