@@ -9,7 +9,9 @@
 
       <div class="w-3/12 mx-4 h-10 text-2xl font-bold relative overflow-hidden scroll-left ticker-thing" :class="{'w-8/12' : mobile}">
         <div class="inline-block">
-          <p class="flex inline-block items-center">whoa it's december, sweet</p>
+          <p class="flex inline-block items-center">
+            richmond harrison is my best friend reply if he is yours also
+          </p>
         </div>
       </div>
 
