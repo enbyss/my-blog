@@ -8,10 +8,12 @@
       </NuxtLink>
 
       <div class="w-3/12 mx-4 h-10 text-2xl font-bold relative overflow-hidden scroll-left ticker-thing" :class="{'w-8/12' : mobile}">
-        <div class="inline-block">
-          <p class="flex inline-block items-center">
-            richmond harrison is my best friend reply if he is yours also
-          </p>
+        <div class="ticker-scroll" :style="{'animation-duration' : tickerDuration}">
+          <div class="inline-block">
+            <p class="flex inline-block items-center">
+              {{tickerMessage}}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -77,11 +79,15 @@ export default {
     return {
       mobile: true,
       showMenu: false,
+      tickerMessage: "richmond harrison is my best friend reply if he is yours also"
     }
   },
   computed: {
     darkMode() {
       return this.$store.state.darkmode;
+    },
+    tickerDuration() {
+      return `${5 + 0.1 * this.tickerMessage.length}s`;
     }
   },
   watch: {
@@ -129,7 +135,11 @@ export default {
   .ticker-thing {
     background: #00000033;
     border-radius: 9px;
-    box-shadow: 0 0 5px #00000088
+    box-shadow: 0 0 5px #00000088;
+  }
+
+  .ticker-scroll {
+    padding-left: 100%;
   }
 
   svg:hover {
@@ -226,20 +236,15 @@ export default {
  line-height: 50px;
  text-align: center;
  /* Starting position */
- transform: translateX(200%);
  animation: scroll-left 15s linear infinite;
 }
 
 @keyframes scroll-left {
   0%   {
-    -moz-transform: translateX(200%); /* Browser bug fix */
-    -webkit-transform: translateX(200%); /* Browser bug fix */
-    transform: translateX(200%);
+    transform: translateZ(0);
   }
   100% {
-    -moz-transform: translateX(-100%); /* Browser bug fix */
-    -webkit-transform: translateX(-100%); /* Browser bug fix */
-    transform: translateX(-100%);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 </style>
