@@ -3,17 +3,23 @@
     <header class="transition duration-200 w-full bg-white border-b-2 dark:border-blue-700
                   flex justify-center h-16 items-center border-gray-200
                   dark:text-white">
-      <NuxtLink :class="{'ml-5' : mobile}" to="/">
-        <img src="~/assets/images/icon.png" class="main-logo h-10 hover:h-12 mr-2 shadow-2xl rounded-full" style="box-shadow: 0 0 10px #3e8eff;"/>
+      <NuxtLink :class="{'ml-5 mr-auto' : mobile}" to="/">
+        <img src="~/assets/images/icon.png" class="w-10 h-10 hover:h-12 mr-2 shadow-2xl rounded-full main-logo" style="box-shadow: 0 0 10px #3e8eff;"/>
       </NuxtLink>
 
-      <input
+      <div class="w-3/12 mx-4 h-10 text-2xl font-bold relative overflow-hidden scroll-left ticker-thing" :class="{'w-8/12' : mobile}">
+        <div class="inline-block">
+          <p class="flex inline-block items-center">whoa it's december, sweet</p>
+        </div>
+      </div>
+
+      <!-- <input
           placeholder="Search..."
           :class="{'ml-auto mr-auto' : mobile}"
           class="transition duration-200 w-48 sm:w-72 md:w-96 bg-gray-300 h-10 rounded-xl px-5 ml-5 mr-5
                 dark:bg-gray-900 dark:text-blue-200 dark:placeholder-blue-300 border-transparent border-2
                 focus:border-blue-400 dark-focus:border-blue-700 placeholder-blue-700"
-      />
+      /> -->
 
       <!-- Links to other pages. -->
       <div v-if="!mobile">
@@ -23,7 +29,7 @@
 
       <!-- Buttons for dark mode and potentially the hamburger menu. -->
       <div :class="{'ml-auto mr-5' : mobile}" class="flex">
-        <span class="icon-bar h-10 inline-block mx-3">
+        <span v-if="!mobile" class="icon-bar h-10 inline-block mx-3">
           <a id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
           <a id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
           <a id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
@@ -51,8 +57,10 @@
         <li>
           <NuxtLink class="block w-full px-5" to="/content">Content</NuxtLink>
         </li>
-        <li>
-          <NuxtLink class="block w-full px-5" to="/about">About</NuxtLink>
+        <li class="links-bar">
+          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
+          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
+          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
         </li>
       </ul>
     </transition>
@@ -116,6 +124,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .ticker-thing {
+    background: #00000033;
+    border-radius: 9px;
+    box-shadow: 0 0 5px #00000088
+  }
+
   svg:hover {
     cursor: pointer;
   }
@@ -171,6 +185,10 @@ export default {
         @apply border-b-4 border-t-4 border-pink-600;
       }
     }
+
+    .links-bar {
+      @apply h-16
+    }
   }
 
   // Dark mode theming
@@ -194,6 +212,34 @@ export default {
   header {
     background: linear-gradient(90deg, rgb(156, 120, 255), rgb(255, 120, 183))
   }
+
+.scroll-left > div {
+ position: absolute;
+//  width: 100%;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ transform: translateX(200%);
+ animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+  0%   {
+    -moz-transform: translateX(200%); /* Browser bug fix */
+    -webkit-transform: translateX(200%); /* Browser bug fix */
+    transform: translateX(200%);
+  }
+  100% {
+    -moz-transform: translateX(-100%); /* Browser bug fix */
+    -webkit-transform: translateX(-100%); /* Browser bug fix */
+    transform: translateX(-100%);
+  }
+}
 </style>
 
 
