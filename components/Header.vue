@@ -27,7 +27,12 @@
         <span v-if="!mobile" class="icon-bar h-10 inline-block mx-3">
           <a id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
           <a id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
-          <a :class="{'live-on-twitch' : isLive}" id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+          <a :class="{'live-on-twitch' : isLive}" id="twitch-icon" href="https://www.twitch.tv/enbyss_">
+            <font-awesome-layers>
+              <font-awesome-icon :icon="['fab', 'twitch']" />
+              <font-awesome-layers-text v-if="isLive" :class="{'live-counter' : isLive}" counter transform="down-2 right-35 shrink-8" position="top-right" value="LIVE" />
+            </font-awesome-layers>
+          </a>
         </span>
 
         <button class="transition duration-200 dark-hover:bg-gray-800 hover:bg-gray-200 w-10 h-10 rounded-full text-xl" @click="toggleDarkMode()">
@@ -142,6 +147,9 @@ export default {
     }
 
     this.tickerWidth = this.$refs.ticker.clientWidth;
+    setInterval(() => {
+      this.$fetch();
+    }, 60000);
   }
 }
 </script>
@@ -174,7 +182,7 @@ export default {
     @apply transition duration-200 rounded-full w-10 h-10 text-xl p-2 inline-flex items-center flex-row;
   }
 
-  .icon-bar > a > svg {
+  .icon-bar > a svg {
     @apply w-6 h-6;
   }
 
@@ -192,6 +200,10 @@ export default {
 
   .live-on-twitch {
     animation: pulsate-live 2s linear infinite;
+  }
+
+  .live-counter {
+    animation: pulsate-live-counter 2s linear infinite;
   }
 
   .header-link {
@@ -294,6 +306,15 @@ export default {
   }
   100% {
     color: inherit;
+  }
+}
+
+@keyframes pulsate-live-counter {
+  0% {
+    background: #FF79C5;
+  }
+  100% {
+    background: red;
   }
 }
 </style>
