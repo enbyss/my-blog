@@ -5,7 +5,7 @@
                   dark:text-white">
       <NuxtLink class="flex items-center main-link mr-5" :class="{'ml-5 mr-auto' : mobile}" to="/">
         <img src="~/assets/images/icon.png" class="w-10 h-10 mr-2 shadow-2xl rounded-full" style="box-shadow: 0 0 10px #3e8eff;"/>
-        <h1 class="text-3xl font-bold title-word">ENBYSS</h1>
+        <h1 class="text-3xl font-bold title-word">ENBYSS <span v-if="isLive">IS LIVE</span> </h1>
       </NuxtLink>
 
       <!-- <input
@@ -27,7 +27,7 @@
         <span v-if="!mobile" class="icon-bar h-10 inline-block mx-3">
           <a id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
           <a id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
-          <a id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+          <a :class="{'live-on-twitch' : isLive}" id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
         </span>
 
         <button class="transition duration-200 dark-hover:bg-gray-800 hover:bg-gray-200 w-10 h-10 rounded-full text-xl" @click="toggleDarkMode()">
@@ -65,7 +65,7 @@
         <li class="links-bar">
           <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
           <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
-          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+          <a :class="{'live-on-twitch' : isLive}" class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
         </li>
       </ul>
     </transition>
@@ -82,6 +82,7 @@ export default {
       showMenu: false,
       tickerWidth: 0,
       speedFactor: 1.2,
+      isLive: false,
       tickerMessages: [
         "richmond harrison is my best friend reply if he is yours also",
         "my next stream is about: HADES",
@@ -90,6 +91,10 @@ export default {
         "spies win BANG BANG"
       ]
     }
+  },
+  async fetch() {
+    let isLive = await this.$axios.get("/api/islive?user=enbyss");
+    this.isLive = isLive.data.isLive;
   },
   computed: {
     darkMode() {
@@ -118,7 +123,6 @@ export default {
   },
   methods: {
     handleResize() {
-      console.log(this.mobile);
       this.mobile = window.innerWidth <= 863;
     },
     toggleDarkMode() {
@@ -184,6 +188,10 @@ export default {
 
   #twitch-icon:hover {
     background: #6441A4;
+  }
+
+  .live-on-twitch {
+    animation: pulsate-live 2s linear infinite;
   }
 
   .header-link {
@@ -277,6 +285,15 @@ export default {
   }
   100% {
     transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes pulsate-live {
+  0% {
+    color: #FF79C5;
+  }
+  100% {
+    color: inherit;
   }
 }
 </style>
