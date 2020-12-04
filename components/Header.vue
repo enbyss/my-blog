@@ -86,7 +86,8 @@ export default {
         "richmond harrison is my best friend reply if he is yours also",
         "my next stream is about: HADES",
         "the enbyss is doing a great job",
-        "this ticker isn't perfect, but it's trying and that's what counts"
+        "this ticker isn't perfect, but it's trying and that's what counts",
+        "spies win BANG BANG"
       ]
     }
   },
