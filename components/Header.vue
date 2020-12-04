@@ -3,19 +3,10 @@
     <header class="transition duration-200 w-full bg-white border-b-2 dark:border-blue-700
                   flex justify-center h-16 items-center border-gray-200
                   dark:text-white">
-      <NuxtLink :class="{'ml-5 mr-auto' : mobile}" to="/">
-        <img src="~/assets/images/icon.png" class="w-10 h-10 hover:h-12 mr-2 shadow-2xl rounded-full main-logo" style="box-shadow: 0 0 10px #3e8eff;"/>
+      <NuxtLink class="flex items-center main-link mr-5" :class="{'ml-5 mr-auto' : mobile}" to="/">
+        <img src="~/assets/images/icon.png" class="w-10 h-10 mr-2 shadow-2xl rounded-full" style="box-shadow: 0 0 10px #3e8eff;"/>
+        <h1 class="text-3xl font-bold title-word">ENBYSS</h1>
       </NuxtLink>
-
-      <div class="w-3/12 mx-4 h-10 text-2xl font-bold relative overflow-hidden scroll-left ticker-thing" :class="{'w-8/12' : mobile}">
-        <div class="ticker-scroll" :style="{'animation-duration' : tickerDuration}">
-          <div class="inline-block">
-            <p class="flex inline-block items-center">
-              {{tickerMessage}}
-            </p>
-          </div>
-        </div>
-      </div>
 
       <!-- <input
           placeholder="Search..."
@@ -27,7 +18,7 @@
 
       <!-- Links to other pages. -->
       <div v-if="!mobile">
-        <NuxtLink class="header-link hover:bg-blue-300 hover:text-blue-800" to="/content">Content</NuxtLink>
+        <NuxtLink class="header-link" id="content-link" to="/content">Content</NuxtLink>
         <!-- <NuxtLink class="header-link hover:bg-red-300 hover:text-red-800" to="/about">About</NuxtLink> -->
       </div>
 
@@ -50,6 +41,16 @@
       </div>
 
     </header>
+
+    <div class="w-full h-10 text-xl font-bold relative overflow-hidden scroll-left ticker-thing z-50 dark:text-white">
+      <div ref="ticker" id="scrolling-ticker" class="ticker-scroll" :style="{'animation-duration' : tickerDuration}">
+        <div class="inline-block">
+          <p class="inline-block items-center mx-40" v-for="(tickerMessage, index) in tickerMessages" :key="index">
+            {{tickerMessage}}
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- Menu on mobile. -->
     <transition name="fade">
@@ -79,7 +80,14 @@ export default {
     return {
       mobile: true,
       showMenu: false,
-      tickerMessage: "richmond harrison is my best friend reply if he is yours also"
+      tickerWidth: 0,
+      speedFactor: 1.2,
+      tickerMessages: [
+        "richmond harrison is my best friend reply if he is yours also",
+        "my next stream is about: HADES",
+        "the enbyss is doing a great job",
+        "this ticker isn't perfect, but it's trying and that's what counts"
+      ]
     }
   },
   computed: {
@@ -87,7 +95,7 @@ export default {
       return this.$store.state.darkmode;
     },
     tickerDuration() {
-      return `${5 + 0.1 * this.tickerMessage.length}s`;
+      return `${(5 + 0.01 * this.tickerWidth)/this.speedFactor}s`;
     }
   },
   watch: {
@@ -118,7 +126,7 @@ export default {
     },
     onCloseMenu() {
       this.showMenu = false;
-    }
+    },
   },
   mounted() {
     if(this.darkMode){
@@ -127,15 +135,26 @@ export default {
     else {
       document.documentElement.classList.remove("mode-dark");
     }
+
+    this.tickerWidth = this.$refs.ticker.clientWidth;
   }
 }
 </script>
 
 <style scoped lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+
   .ticker-thing {
-    background: #00000033;
-    border-radius: 9px;
+    background: linear-gradient(90deg, rgba(68, 0, 255, 0.4), rgba(255, 0, 119, 0.4));
     box-shadow: 0 0 5px #00000088;
+  }
+
+  .title-word {
+    font-family: 'Knewave';
+    background-image: linear-gradient(to left, rgb(55, 0, 255), rgb(146, 0, 85));
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 4px crimson);
   }
 
   .ticker-scroll {
@@ -167,8 +186,14 @@ export default {
   }
 
   .header-link {
-    @apply transition duration-200 px-4 py-2 rounded-xl mr-1;
+    @apply transition duration-200 px-4 py-2 rounded-xl;
+    background: #ffffff55;
   }
+
+  #content-link:hover {
+    @apply bg-blue-300 text-blue-800;
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: all .2s ease-in-out;
   }
@@ -179,13 +204,13 @@ export default {
     @apply translate-x-0 h-auto;
   }
 
-  .main-logo {
+  .main-link {
     transition: all 0.2s ease-in-out;
   }
 
-  .main-logo:hover {
-    filter: hue-rotate(45deg);
-    transform: scale(1.2) rotate(180deg);
+  .main-link:hover {
+    transform: scale(1.1);
+    filter: hue-rotate(10deg);
   }
 
   .burger-menu-list {
@@ -207,6 +232,12 @@ export default {
   .mode-dark {
     header {
       background: linear-gradient(90deg, rgb(68, 0, 255), rgb(255, 0, 119))
+    }
+    .header-link {
+      background: #00000055;
+    }
+    .title-word {
+      background-image: linear-gradient(to left, rgb(255, 153, 0), rgb(255, 0, 149));
     }
     .burger-menu-list {
       li {

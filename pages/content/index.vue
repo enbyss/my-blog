@@ -61,12 +61,13 @@ export default {
 .category-banner-container {
   @apply text-left px-5 m-3 pt-2 pb-5 rounded-3xl;
   width: 400px;
+  max-width: 90%;
   display: inline-block;
   color: white;
   transition: all .2s ease-in-out;
 
   h1 {
-    font-size: 60pt;
+    font-size: 40pt;
     font-weight: 800;
     font-style: italic;
     transition: all .2 ease-in-out;
@@ -75,7 +76,7 @@ export default {
 
   h2 {
     font-size: 18pt;
-    margin-top: -20pt;
+    margin-top: -10pt;
     font-weight: 600;
     font-style: italic;
     line-height: 1.1;
