@@ -47,6 +47,13 @@
 
     </header>
 
+    <div v-if="isLive" class="px-3 py-3 w-full h-auto text-xl relative stream-announcement z-50 dark:text-white">
+      <p class="flex items-center justify-center">
+        <span class="font-bold mr-4">Currently streaming:</span>
+        <a id="streamTitle" href="twitch.tv/enbyss_">{{streamTitle}}</a>
+      </p>
+    </div>
+
     <div class="w-full h-10 text-xl font-bold relative overflow-hidden scroll-left ticker-thing z-50 dark:text-white">
       <div ref="ticker" id="scrolling-ticker" class="ticker-scroll" :style="{'animation-duration' : tickerDuration}">
         <div class="inline-block">
@@ -88,18 +95,20 @@ export default {
       tickerWidth: 0,
       speedFactor: 1.2,
       isLive: false,
+      streamTitle: '',
       tickerMessages: [
         "richmond harrison is my best friend reply if he is yours also",
-        "my next stream is about: HADES",
         "the enbyss is doing a great job",
         "this ticker isn't perfect, but it's trying and that's what counts",
-        "spies win BANG BANG"
+        "spies win BANG BANG",
+        "i physically can't stop messing with this site please help",
       ]
     }
   },
   async fetch() {
     let isLive = await this.$axios.get("/api/islive?user=enbyss");
     this.isLive = isLive.data.isLive;
+    this.streamTitle = isLive.data.streamTitle;
   },
   computed: {
     darkMode() {
@@ -156,9 +165,29 @@ export default {
 
 <style scoped lang="scss">
   @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+  .stream-announcement {
+    background: linear-gradient(90deg, rgb(103, 232, 255), rgb(204, 255, 109));
+    box-shadow: 0 0 5px #00000088;
+  }
+
+  #streamTitle {
+    font-family: 'Staatliches';
+    font-size: 20pt;
+    background-image: linear-gradient(to left, rgb(0, 156, 39), rgb(0, 55, 138));
+    filter: drop-shadow(0 0 4px white);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #streamTitle:hover {
+    letter-spacing: 1px;
+  }
 
   .ticker-thing {
-    background: linear-gradient(90deg, rgba(68, 0, 255, 0.4), rgba(255, 0, 119, 0.4));
+    background: linear-gradient(90deg, rgb(130, 85, 255), rgb(255, 105, 175));
     box-shadow: 0 0 5px #00000088;
   }
 
@@ -259,6 +288,17 @@ export default {
     }
     .title-word {
       background-image: linear-gradient(to left, rgb(255, 153, 0), rgb(255, 0, 149));
+    }
+    #streamTitle {
+      background-image: linear-gradient(to left, rgb(91, 255, 132), rgb(52, 133, 255));
+      filter: drop-shadow(0 0 4px black);
+    }
+    .stream-announcement {
+      background: linear-gradient(90deg, rgb(0, 47, 255), rgb(0, 112, 0));
+    }
+    .ticker-thing {
+      background: linear-gradient(90deg, rgb(40, 0, 150), rgb(133, 0, 62));
+      box-shadow: 0 0 5px #00000088;
     }
     .burger-menu-list {
       li {

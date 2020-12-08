@@ -18,11 +18,13 @@ exports.handler = async function(event, context) {
 
     const userDetails = await axios.get(`https://api.twitch.tv/helix/search/channels?query=${event.queryStringParameters.user}`, config);
     const isLive = userDetails.data.data[0].is_live;
+    const streamTitle = userDetails.data.data[0].title;
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        isLive
+        isLive,
+        streamTitle
       })
     }
   } catch(e) {
