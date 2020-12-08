@@ -39,20 +39,16 @@ export default {
           content: this.image
         },
         {
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
           property: 'twitter:site',
           content: '@enbyss'
         },
         {
-          property: 'twitter:title',
-          content: this.article.title,
-        },
-        {
-          property: 'twitter:description',
-          content: this.article.description,
-        },
-        {
-          property: 'twitter:image',
-          content: this.image
+          property: 'twitter:creator',
+          content: '@enbyss'
         },
       ]
     }
