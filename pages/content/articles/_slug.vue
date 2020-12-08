@@ -38,6 +38,22 @@ export default {
           property: 'og:image',
           content: this.image
         },
+        {
+          property: 'twitter:site',
+          content: '@enbyss'
+        },
+        {
+          property: 'twitter:title',
+          content: this.article.title,
+        },
+        {
+          property: 'twitter:description',
+          content: this.article.description,
+        },
+        {
+          property: 'twitter:image',
+          content: this.image
+        },
       ]
     }
   }

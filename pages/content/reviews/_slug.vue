@@ -41,6 +41,22 @@ export default {
           property: 'og:image',
           content: this.image
         },
+        {
+          property: 'twitter:site',
+          content: '@enbyss'
+        },
+        {
+          property: 'twitter:title',
+          content: this.review.title,
+        },
+        {
+          property: 'twitter:description',
+          content: this.review.description,
+        },
+        {
+          property: 'twitter:image',
+          content: this.image
+        },
       ]
     }
   }
