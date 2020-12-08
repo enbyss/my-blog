@@ -2,6 +2,17 @@ const axios = require('axios');
 require('dotenv').config();
 
 exports.handler = async function(event, context) {
+
+  if(!event.queryStringParameters.user) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Please pass a "user" query parameter',
+        example: 'https://enbyss.com/api/islive?user=enbyss_'
+      })
+    }
+  }
+
   try {
     const token = await axios.post("https://id.twitch.tv/oauth2/token", null,  { params: {
       'client_id' : process.env.TWITCH_CLIENT_ID,
