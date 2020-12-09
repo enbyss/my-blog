@@ -6,6 +6,8 @@ showtoc: true
 category: articles # name of directory
 metaimage: 'getting-stuck-in-lifes-hole.png'
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
+createdAt: 08-12-2020
+updatedAt: 08-12-2020
 ---
 
 There's a very strong feeling that's been laying claim over me for quite a while now. 

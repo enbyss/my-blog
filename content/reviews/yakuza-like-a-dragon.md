@@ -8,6 +8,8 @@ rating: 9.0
 ratingSummary: "This game nears absolute perfection, with its only problems being incredibly minor. Definitely an experience you shouldn't miss."
 metaimage: 'yakuza-like-a-dragon.jpg'
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
+createdAt: 13-11-2020
+updatedAt: 13-11-2020
 ---
 
 The day is November the 13th. I find out that _Yakuza: Like A Dragon_ is out on Steam, fully localized. I take one look at the prices,
