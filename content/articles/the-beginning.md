@@ -6,8 +6,8 @@ showtoc: true
 category: articles # name of directory
 metaimage: 'the-beginning.png'
 type: complete # complete, ongoing, group [should come with an attribute (partAmnt)]
-createdAt: 12-11-2020
-updatedAt: 12-11-2020
+createdAt: 2020-11-12
+updatedAt: 2020-11-12
 ---
 
 Do you like how this site looks? I do too. I spent a lot of time working on it though, and it
