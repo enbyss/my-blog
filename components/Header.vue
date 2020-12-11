@@ -19,7 +19,7 @@
       <!-- Links to other pages. -->
       <div v-if="!mobile">
         <NuxtLink class="header-link" id="content-link" to="/content">Content</NuxtLink>
-        <!-- <NuxtLink class="header-link hover:bg-red-300 hover:text-red-800" to="/about">About</NuxtLink> -->
+        <NuxtLink class="header-link" id="tools-link" to="/tools">Tools</NuxtLink>
       </div>
 
       <!-- Buttons for dark mode and potentially the hamburger menu. -->
@@ -242,6 +242,10 @@ export default {
 
   #content-link:hover {
     @apply bg-blue-300 text-blue-800;
+  }
+
+  #tools-link:hover {
+    @apply bg-red-300 text-red-800;
   }
 
   .fade-enter-active, .fade-leave-active {
