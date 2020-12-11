@@ -43,13 +43,37 @@ export default {
   },
   head() {
     return {
-      title: "Content.",
+      title: "Content",
       meta: [
         {
           hid: 'description',
           name: "description",
-          content: "This is where I put all the stuff I've written. Pretty barren right now.",
-        }
+          content: "This is where I put all the stuff I've written. Pretty barren right now",
+        },
+        {
+          property: 'og:title',
+          content: "Content",
+        },
+        {
+          property: 'og:description',
+          content: "This is where I put all the stuff I've written. Pretty barren right now",
+        },
+        {
+          property: 'og:image',
+          content: "/ContentIcon.png"
+        },
+        {
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          property: 'twitter:site',
+          content: '@enbyss'
+        },
+        {
+          property: 'twitter:creator',
+          content: '@enbyss'
+        },
       ]
     }
   }

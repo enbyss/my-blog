@@ -22,7 +22,7 @@ export default {
       tools: [
         {
           name: 'Channel Points Icon Generator',
-          description: 'A tool to generate the icons for channel points, in all three sizes.',
+          description: 'A tool to generate the icons for Twitch channel points, in all three sizes.',
           link: '/tools/channel-points-icon-gen',
         },
       ]
@@ -30,13 +30,37 @@ export default {
   },
   head() {
     return {
-      title: "Content.",
+      title: "Tools",
       meta: [
         {
           hid: 'description',
           name: "description",
-          content: "This is where I put all the stuff I've written. Pretty barren right now.",
-        }
+          content: "Some tools I made that you might find useful.",
+        },
+        {
+          property: 'og:title',
+          content: "Tools",
+        },
+        {
+          property: 'og:description',
+          content: "Some tools I made that you might find useful.",
+        },
+        {
+          property: 'og:image',
+          content: "/Tools.png"
+        },
+        {
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          property: 'twitter:site',
+          content: '@enbyss'
+        },
+        {
+          property: 'twitter:creator',
+          content: '@enbyss'
+        },
       ]
     }
   }

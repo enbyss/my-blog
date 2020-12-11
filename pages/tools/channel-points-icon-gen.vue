@@ -121,6 +121,42 @@ export default {
 
       img.src = this.url;
     }
+  },
+  head() {
+    return {
+      title: "Channel Points Icon Generator",
+      meta: [
+        {
+          hid: 'description',
+          name: "description",
+          content: "A helpful tool for if you want to generate all the sizes for a channel points icon real quick.",
+        },
+        {
+          property: 'og:title',
+          content: "Channel Points Icon Generator",
+        },
+        {
+          property: 'og:description',
+          content: "A helpful tool for if you want to generate all the sizes for a channel points icon real quick.",
+        },
+        {
+          property: 'og:image',
+          content: "/ChannelPoints.png"
+        },
+        {
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          property: 'twitter:site',
+          content: '@enbyss'
+        },
+        {
+          property: 'twitter:creator',
+          content: '@enbyss'
+        },
+      ]
+    }
   }
 }
 </script>
