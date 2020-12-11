@@ -82,7 +82,7 @@ export default {
 
       const options = {
         'imageType' : 'png',
-        'quality' : 1.0
+        'quality' : 0.6
       }
 
       downscale(this.url, 28, 28, options).then((dataURL) => {
@@ -96,6 +96,12 @@ export default {
       downscale(this.url, 112, 112, options).then((dataURL) => {
         this.resized.x112 = dataURL
       });
+
+      let zip = new JSZip();
+      zip.file("ChannelPoints28.png", getBase64(this.resized.x28), {base64: true});
+      zip.file("ChannelPoints56.png", getBase64(this.resized.x56), {base64: true});
+      zip.file("ChannelPoints112.png", getBase64(this.resized.x112), {base64: true});
+      this.zippedImages = zip;
     }
   },
   head() {
