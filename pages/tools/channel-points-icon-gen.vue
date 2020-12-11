@@ -53,6 +53,7 @@
 
 <script>
 import JSZip from 'jszip';
+import downscale from 'downscale';
 
 export default {
   data() {
@@ -79,47 +80,22 @@ export default {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
 
-      var img = new Image();
-
-      img.onload = () => {
-        var canvas28 = document.createElement('canvas');
-        var canvas56 = document.createElement('canvas');
-        var canvas112 = document.createElement('canvas');
-
-        var ctx28 = canvas28.getContext("2d");
-        var ctx56 = canvas56.getContext("2d");
-        var ctx112 = canvas112.getContext("2d");
-
-        let canvasDims = (canvas, dim) => {
-          canvas.width=dim;
-          canvas.height=dim;
-        }
-
-        canvasDims(canvas28, 28);
-        canvasDims(canvas56, 56);
-        canvasDims(canvas112, 112);
-
-        let ctxDraw = (ctx, canvas) => ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        ctxDraw(ctx28, canvas28);
-        ctxDraw(ctx56, canvas56);
-        ctxDraw(ctx112, canvas112);
-
-        this.resized.x28 = canvas28.toDataURL('image/png');
-        this.resized.x56 = canvas56.toDataURL('image/png');
-        this.resized.x112 = canvas112.toDataURL('image/png');
-
-        const getBase64 = (url) => url.replace(/^data:image\/(png|jpg);base64,/, "");
-
-        let zip = new JSZip();
-        zip.file("ChannelPoints28.png", getBase64(this.resized.x28), {base64: true});
-        zip.file("ChannelPoints56.png", getBase64(this.resized.x56), {base64: true});
-        zip.file("ChannelPoints112.png", getBase64(this.resized.x112), {base64: true});
-
-        this.zippedImages = zip;
+      const options = {
+        'imageType' : 'png',
+        'quality' : 1.0
       }
 
-      img.src = this.url;
+      downscale(this.url, 28, 28, options).then((dataURL) => {
+        this.resized.x28 = dataURL
+      });
+
+      downscale(this.url, 56, 56, options).then((dataURL) => {
+        this.resized.x56 = dataURL
+      });
+
+      downscale(this.url, 112, 112, options).then((dataURL) => {
+        this.resized.x112 = dataURL
+      });
     }
   },
   head() {
