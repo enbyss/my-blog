@@ -26,11 +26,14 @@
       <button v-if="zippedImages" id="download-all-button" @click="downloadArchive()" class="p-3 rounded-xl font-bold text-xl">
         DOWNLOAD ALL
       </button>
+
+      <!-- The main image uploaded. -->
       <div id="main-image">
         <p>Main image</p>
         <img :src="url" />
       </div>
 
+      <!-- Shows all icon sizes. -->
       <div v-for="(size, index) in loadedSizes" :key="index" :id="'image-'+size">
         <p>{{size + 'x' + size}}</p>
         <img :src="resized['x' + size].img" />
@@ -71,6 +74,9 @@ export default {
         });
     },
     async onFileChange(e) {
+      this.zippedImages = null;
+      this.loadedSizes = [];
+
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
 
