@@ -85,25 +85,23 @@ export default {
         'quality' : 0.4
       }
 
-      downscale(this.url, 28, 28, options).then((dataURL) => {
-        this.resized.x28 = dataURL
-      });
-
-      downscale(this.url, 56, 56, options).then((dataURL) => {
-        this.resized.x56 = dataURL
-      });
-
-      downscale(this.url, 112, 112, options).then((dataURL) => {
-        this.resized.x112 = dataURL
-      });
-
       const getBase64 = (url) => url.replace(/^data:image\/(png|jpg);base64,/, "");
 
-      let zip = new JSZip();
-      zip.file("ChannelPoints28.png", getBase64(this.resized.x28), {base64: true});
-      zip.file("ChannelPoints56.png", getBase64(this.resized.x56), {base64: true});
-      zip.file("ChannelPoints112.png", getBase64(this.resized.x112), {base64: true});
-      this.zippedImages = zip;
+      Promise.all([
+        downscale(this.url, 28, 28, options),
+        downscale(this.url, 56, 56, options),
+        downscale(this.url, 112, 112, options)
+      ]).then((values) => {
+        this.resized.x28 = values[0];
+        this.resized.x56 = values[1];
+        this.resized.x112 = values[2];
+
+        let zip = new JSZip();
+        zip.file("ChannelPoints28.png", getBase64(this.resized.x28), {base64: true});
+        zip.file("ChannelPoints56.png", getBase64(this.resized.x56), {base64: true});
+        zip.file("ChannelPoints112.png", getBase64(this.resized.x112), {base64: true});
+        this.zippedImages = zip;
+      })
     }
   },
   head() {
