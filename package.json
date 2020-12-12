@@ -24,12 +24,15 @@
     "dotenv": "^8.2.0",
     "downscale": "^1.0.6",
     "file-saver": "^2.0.5",
+    "imagemin": "^7.0.1",
+    "imagemin-pngquant": "^9.0.1",
     "jszip": "^3.5.0",
     "netlify-cli": "^2.69.3",
     "netlify-lambda": "^2.0.1",
     "nuxt": "^2.14.10",
     "prism-themes": "^1.5.0",
     "reading-time": "^1.2.1",
+    "sharp": "^0.26.3",
     "tailwindcss-dark-mode": "^1.1.7"
   },
   "devDependencies": {

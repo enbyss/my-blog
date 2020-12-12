@@ -4,12 +4,16 @@
       <h1 class="text-3xl font-bold">Channel Points Icon Generator</h1>
       <p>
         This tool helps convert an image you pass in to the three <i>(28x28, 56x56, 112x112)</i> icon sizes required.
-        You can then either download each size individually, or all of them in one.
+        You can then either download each size individually, or all of them in one. This also works for designing icons for channel point <i>rewards.</i>
+      </p>
+      <br />
+      <p>
+        It also compresses these icons so that the chances of hitting the filesize limit is minimal.
       </p>
       <br/>
       <p>
         <b>Note:</b> You'll get best results if you upload a 1:1 image. Any other ratio, and the image
-        will be stretched or squished to fit this ratio.
+        will be cropped to fit the ratio.
       </p>
     </div>
 
@@ -19,34 +23,23 @@
     </div>
 
     <div v-if="url" id="image-grid">
-      <button id="download-all-button" v-if="url" @click="downloadArchive()" class="p-3 rounded-xl font-bold text-xl">
+      <button v-if="zippedImages" id="download-all-button" @click="downloadArchive()" class="p-3 rounded-xl font-bold text-xl">
         DOWNLOAD ALL
       </button>
       <div id="main-image">
         <p>Main image</p>
         <img :src="url" />
       </div>
-      <div id="image-28">
-        <p>28x28</p>
-        <img :src="this.resized.x28" />
-        <a :href="this.resized.x28" download>
+
+      <div v-for="(size, index) in loadedSizes" :key="index" :id="'image-'+size">
+        <p>{{size + 'x' + size}}</p>
+        <img :src="resized['x' + size].img" />
+        <i>{{resized['x' + size].size}}</i>
+        <a :href="resized['x' + size].img" download>
           <font-awesome-icon :icon="['fas', 'download']" />
         </a>
       </div>
-      <div id="image-56">
-        <p>56x56</p>
-        <img :src="this.resized.x56" />
-        <a :href="this.resized.x56" download>
-          <font-awesome-icon :icon="['fas', 'download']" />
-        </a>
-      </div>
-      <div id="image-112">
-        <p>112x112</p>
-        <img :src="this.resized.x112" />
-        <a :href="this.resized.x112" download>
-          <font-awesome-icon :icon="['fas', 'download']" />
-        </a>
-      </div>
+
     </div>
   </div>
 </template>
@@ -60,11 +53,12 @@ export default {
     return {
       url: null,
       zippedImages: null,
+      loadedSizes : [],
       resized : {
-        'x28' : null,
-        'x56' : null,
-        'x112' : null,
-      }
+        'x28' : {},
+        'x56' : {},
+        'x112' : {},
+      },
     }
   },
   methods: {
@@ -76,32 +70,69 @@ export default {
             FileSaver.saveAs(content, "icons.zip");
         });
     },
-    onFileChange(e) {
+    async onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
 
-      const options = {
-        'imageType' : 'png',
-        'quality' : 0.4
-      }
-
       const getBase64 = (url) => url.replace(/^data:image\/(png|jpg);base64,/, "");
 
-      Promise.all([
-        downscale(this.url, 28, 28, options),
-        downscale(this.url, 56, 56, options),
-        downscale(this.url, 112, 112, options)
-      ]).then((values) => {
-        this.resized.x28 = values[0];
-        this.resized.x56 = values[1];
-        this.resized.x112 = values[2];
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
 
-        let zip = new JSZip();
-        zip.file("ChannelPoints28.png", getBase64(this.resized.x28), {base64: true});
-        zip.file("ChannelPoints56.png", getBase64(this.resized.x56), {base64: true});
-        zip.file("ChannelPoints112.png", getBase64(this.resized.x112), {base64: true});
-        this.zippedImages = zip;
-      })
+      reader.onload = async function () {
+        const b64 = getBase64(reader.result);
+
+        try {
+          const result = await this.$axios.post(`/api/genTwitchIcon`, {
+            b64
+          });
+
+          console.info("Processed images.");
+
+          // For archiving
+          let zip = new JSZip();
+          zip.file("ChannelPoints28.png", getBase64(result.data.v28.image), {base64: true});
+          zip.file("ChannelPoints56.png", getBase64(result.data.v56.image), {base64: true});
+          zip.file("ChannelPoints112.png", getBase64(result.data.v112.image), {base64: true});
+          this.zippedImages = zip;
+
+          console.info("Processed archive.");
+
+          const setResized = ((dim) => {
+            const formatBytes = (bytes, decimals = 2) => {
+              if (bytes === 0) return '0 Bytes';
+
+              const k = 1024;
+              const dm = decimals < 0 ? 0 : decimals;
+              const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+              const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+              return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            }
+
+
+            this.resized['x' + dim] = {
+              size: formatBytes(result.data['v' + dim].size),
+              img: `data:image/${result.data.format};base64, ${result.data['v' + dim].image}`,
+            }
+            this.loadedSizes.push(dim);
+          }).bind(this);
+
+          // For displaying.
+          setResized(28);
+          setResized(56);
+          setResized(112);
+
+          console.info("Displayed individual files.");
+          console.info("Complete.");
+
+        } catch (err) {
+          console.error("Failed to process images.");
+          console.error(err);
+        }
+
+      }.bind(this);
     }
   },
   head() {
