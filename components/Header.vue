@@ -74,6 +74,9 @@
         <li>
           <NuxtLink class="block w-full px-5" to="/content">Content</NuxtLink>
         </li>
+        <li>
+          <NuxtLink class="block w-full px-5" to="/tools">Tools</NuxtLink>
+        </li>
         <li class="links-bar">
           <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
           <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
