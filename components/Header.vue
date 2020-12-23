@@ -8,14 +8,6 @@
         <h1 class="text-3xl font-bold title-word">ENBYSS <span v-if="isLive">IS LIVE</span> </h1>
       </NuxtLink>
 
-      <!-- <input
-          placeholder="Search..."
-          :class="{'ml-auto mr-auto' : mobile}"
-          class="transition duration-200 w-48 sm:w-72 md:w-96 bg-gray-300 h-10 rounded-xl px-5 ml-5 mr-5
-                dark:bg-gray-900 dark:text-blue-200 dark:placeholder-blue-300 border-transparent border-2
-                focus:border-blue-400 dark-focus:border-blue-700 placeholder-blue-700"
-      /> -->
-
       <!-- Links to other pages. -->
       <div v-if="!mobile">
         <NuxtLink class="header-link" id="content-link" to="/content">Content</NuxtLink>

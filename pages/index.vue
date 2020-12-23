@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col justify-center text-center dark:text-white">
+    <a style="display: none;" rel="me" href="https://hellsite.site/@enbyss">Mastodon</a>
     <h1 class="title text-6xl font-bold">Yo.</h1>
     <h2 class="text-3xl mx-auto w-10/12">
       Hello, I'm <b>Enbyss</b>. My pronouns are <b>they/them</b> and this is... well, <i>my site.</i>
