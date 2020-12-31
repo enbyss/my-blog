@@ -25,6 +25,11 @@ export default {
           description: 'A tool to generate the icons for Twitch channel points, in all three sizes.',
           link: '/tools/channel-points-icon-gen',
         },
+        {
+          name: 'Twitch-2-Editor Marker Generator',
+          description: 'Something to help convert your twitch stream markers to EDL files that many video editors can use.',
+          link: '/tools/stream-marker-edl',
+        }
       ]
     }
   },
