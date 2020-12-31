@@ -10,20 +10,20 @@
         </a>
       </div>
       <hr class="mt-8 mb-5">
-      <h1 class="mx-auto font-bold text-2xl my-3">Twitch-2-Editor Marker Generator</h1>
+      <h1 class="mx-auto font-bold text-2xl my-3">Twitch-2-Resolve Marker Converter</h1>
       <div class="mx-auto">
         <p class="my-3 mx-8 text-xl text-center" style="max-width:800px">
           This tool to put it lightly, generates a marker file from your <b>Twitch CSV marker file.</b>
           More specifically, it generates an <b>EDL file</b> that can be imported into a video editor compatible
-          with it. So far it's only confirmed to work with <b><i>Davinci Resolve</i></b>, however it should work
-          with all editors that use the <b>CMX3600</b> EDL format, including <b><i>Adobe Premiere</i></b>.
+          with it.
         </p>
         <p class="my-3 mx-8 text-xl text-center" style="max-width:800px">
-          To find out what your editor uses, look up something like... uh...
-          <pre>which edl format does [your editor] use</pre>
-          As for how to actually <i>import</i> an <b>EDL</b> file into your editor, that depends on each editor. Unfortunately, this is
-          where you're going to need to experiment a bit. At some point I might make a video explaining how to do this though to help out.
-          When I do, I'll link it here.
+          So far it's only confirmed to work with <b><i>Davinci Resolve</i></b>, so I named it as such.
+          I <i>thought</i> it would work with all editors that supported EDL, but after seeing how Premiere uses EDL
+          files uh. I'm not so sure anymore.
+        </p>
+        <p class="my-3 mx-8 text-xl text-center" style="max-width:800px">
+          As for how to import it, I'll be making a video on how to do that... someday. When I do, I'll link it here!
         </p>
       </div>
       <h1 class="mx-auto font-bold text-2xl my-3 italic">Sorry, EDL?</h1>
@@ -129,6 +129,42 @@ export default {
           comment: marker[3]
         }
       }).slice(0, -1);
+    }
+  },
+    head() {
+    return {
+      title: "Twitch-2-Resolve Marker Converter",
+      meta: [
+        {
+          hid: 'description',
+          name: "description",
+          content: "A tool that helps convert your Twitch Marker file into an EDL file that Davinci Resolve can use.",
+        },
+        {
+          property: 'og:title',
+          content: "Twitch-2-Resolve Marker Converter",
+        },
+        {
+          property: 'og:description',
+          content: "A tool that helps convert your Twitch Marker file into an EDL file that Davinci Resolve can use.",
+        },
+        {
+          property: 'og:image',
+          content: "/MarkerConverter.png"
+        },
+        {
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          property: 'twitter:site',
+          content: '@enbyss'
+        },
+        {
+          property: 'twitter:creator',
+          content: '@enbyss'
+        },
+      ]
     }
   }
 }

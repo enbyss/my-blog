@@ -26,8 +26,8 @@ export default {
           link: '/tools/channel-points-icon-gen',
         },
         {
-          name: 'Twitch-2-Editor Marker Generator',
-          description: 'Something to help convert your twitch stream markers to EDL files that many video editors can use.',
+          name: 'Twitch-2-Resolve Marker Converter',
+          description: 'Something to help convert your twitch stream markers to EDL files that Davinci Resolve can use.',
           link: '/tools/stream-marker-edl',
         }
       ]
