@@ -23,7 +23,7 @@
           files uh. I'm not so sure anymore.
         </p>
         <p class="my-3 mx-8 text-xl text-center" style="max-width:800px">
-          As for how to import it, I'll be making a video on how to do that... someday. When I do, I'll link it here!
+          As for how to import it, watch <a class="text-orange-800 dark:text-orange-400 italic" href="https://youtu.be/SJ867oKZhuM">this video here!</a>
         </p>
       </div>
       <h1 class="mx-auto font-bold text-2xl my-3 italic">Sorry, EDL?</h1>
