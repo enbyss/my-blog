@@ -49,11 +49,12 @@
 export default {
   data() {
     return {
-      processedEDL: "TEST",
+      processedEDL: null,
     }
   },
   methods: {
     onFileChange(e) {
+      this.processedEDL = null;
       const file = e.target.files[0];
       const reader = new FileReader();
 
@@ -64,9 +65,6 @@ export default {
         const toEDLData = csv.map((marker, index) => {
           const splitCode = marker.timecode.split(':');
           const timecode = `${(parseInt(splitCode[0])+1).toString().padStart(2, "0")}:${splitCode[1]}:${splitCode[2]}`;
-          //           class: marker[1],
-          // username: marker[2],
-          // comment: marker[3]
           return {
             start: `${timecode}:00`,
             end: `${timecode}:01`,
