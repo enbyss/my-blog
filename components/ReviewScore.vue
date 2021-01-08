@@ -33,8 +33,11 @@ export default {
       else if (this.score >= 6 && this.score < 8) {
         return 'great'
       }
-      else if (this.score >= 8) {
+      else if (this.score >= 8 && this.score < 10) {
         return 'brilliant';
+      }
+      else if (this.score >= 10) {
+        return 'perfection';
       }
     }
   }
@@ -129,6 +132,17 @@ export default {
 
   .brilliant {
     background: linear-gradient(90deg, rgb(140, 0, 255), rgba(255, 0, 157, 0.178));
+
+    .score {
+      background: linear-gradient(90deg, rgb(255, 0, 149), rgba(140, 0, 255, 0.425));
+    }
+
+    animation: rainbow-fx 5s linear infinite;
+  }
+
+  .perfection {
+    background: linear-gradient(90deg, rgb(140, 0, 255), rgba(255, 0, 157, 0.178));
+    box-shadow: 0 0 30px rgb(0, 104, 87);
 
     .score {
       background: linear-gradient(90deg, rgb(255, 0, 149), rgba(140, 0, 255, 0.425));
