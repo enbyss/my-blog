@@ -9,31 +9,13 @@
       Check the header for different pages!
     </div>
     <p>
-      Basically, this place serves as a playground or <i>library</i> in a sense, of things that I
-      may be working on. Some of this includes writing in the form of <i>informal reviews</i> (as
-      I am not a professional reviewer), <i>articles</i> (<i>blogposts</i> is a more accurate term,
-      but yeah), and possibly more in the future.
-    </p>
-    <p>
-      I have quite a lot of hobbies, you could say. <b>Too many</b>. Which also means that I'm all over
-      the place. The <b>main</b> things I do, mostly, are <i>stream games</i>, <i>edit youtube videos (kind of)</i>,
-      and <i>program stuff</i>.
-    </p>
-    <p>
-      This website, honestly, should be proof enough of how into programming I am. As for youtube and streaming, you could
-      see as much in the links below this paragraph.
+      Here are links to some of the stuff I do. Any subs/follows/patronage is <i>heavily</i> appreciated! Someday I'll put more stuff on this page.
     </p>
     <p class="icon-bar">
       <a href="https://twitter.com/enbyss_"><font-awesome-icon id="twitter-icon" :icon="['fab', 'twitter']" size="3x" /></a>
       <a href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon id="youtube-icon" :icon="['fab', 'youtube']" size="3x" /></a>
       <a href="https://www.twitch.tv/enbyss_"><font-awesome-icon id="twitch-icon" :icon="['fab', 'twitch']" size="3x" /></a>
-    </p>
-    <p>
-      You may see that my twitter is less than <b>professional</b>, and my youtube is a bit <b>inactive</b>. The former is because I want to put an honest
-      foot forward in a sense, and be consistently <b>me.</b> Mostly because that's the most comfortable way to act for me, and because <i>consistency helps.</i>
-    </p>
-    <p>
-      The latter however is because editing is hard. I'm workin' on that. Trying to.
+      <a href="https://www.patreon.com/enbyss"><font-awesome-icon id="patreon-icon" :icon="['fab', 'patreon']" size="3x" /></a>
     </p>
   </div>
 </template>
@@ -68,7 +50,7 @@ svg:hover {
   @apply mx-5;
 }
 
-#twitter-icon, #youtube-icon, #twitch-icon {
+#twitter-icon, #youtube-icon, #twitch-icon, #patreon-icon {
   transition: all .2s ease-in-out;
 }
 
@@ -84,6 +66,10 @@ svg:hover {
   filter: drop-shadow( 0 0 10px #6441A4);
 }
 
+#patreon-icon {
+  filter: drop-shadow( 0 0 10px #ff6a06);
+}
+
 #twitter-icon:hover {
   color: #1DA1F2;
 }
@@ -94,6 +80,10 @@ svg:hover {
 
 #twitch-icon:hover {
   color: #6441A4;
+}
+
+#patreon-icon:hover {
+  color: #ff6a06;
 }
 
 @screen lg {

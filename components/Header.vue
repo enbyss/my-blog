@@ -25,6 +25,7 @@
               <font-awesome-layers-text v-if="isLive" :class="{'live-counter' : isLive}" counter transform="down-2 right-35 shrink-8" position="top-right" value="LIVE" />
             </font-awesome-layers>
           </a>
+          <a id="patreon-icon" href="https://www.patreon.com/ENBYSS"><font-awesome-icon :icon="['fab', 'patreon']" /></a>
         </span>
 
         <button class="transition duration-200 dark-hover:bg-gray-800 hover:bg-gray-200 w-10 h-10 rounded-full text-xl" @click="toggleDarkMode()">
@@ -70,9 +71,18 @@
           <NuxtLink class="block w-full px-5" to="/tools">Tools</NuxtLink>
         </li>
         <li class="links-bar">
-          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitter-icon" href="https://twitter.com/enbyss_"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
-          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
-          <a :class="{'live-on-twitch' : isLive}" class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitch-icon" href="https://www.twitch.tv/enbyss_"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitter-icon" href="https://twitter.com/enbyss_">
+            <font-awesome-icon :icon="['fab', 'twitter']" />
+          </a>
+          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="youtube-icon" href="https://www.youtube.com/channel/UCvsQyeyBvvOOppg2R0vsfPw">
+            <font-awesome-icon :icon="['fab', 'youtube']" />
+          </a>
+          <a :class="{'live-on-twitch' : isLive}" class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="twitch-icon" href="https://www.twitch.tv/enbyss_">
+            <font-awesome-icon :icon="['fab', 'twitch']" />
+          </a>
+          <a class="w-4/12 h-full flex items-center justify-center text-3xl transition duration-200" id="patreon-icon" href="https://www.patreon.com/ENBYSS">
+            <font-awesome-icon :icon="['fab', 'patreon']" />
+          </a>
         </li>
       </ul>
     </transition>
@@ -220,6 +230,10 @@ export default {
 
   #twitch-icon:hover {
     background: #6441A4;
+  }
+
+  #patreon-icon:hover {
+    background: #ff6a06;
   }
 
   .live-on-twitch {
