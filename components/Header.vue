@@ -276,12 +276,10 @@ export default {
 
   .burger-menu-list {
     li {
-      @apply border-t-2 border-b-2 border-gray-200 h-12 flex items-center transition transition-all duration-200 text-gray-800;
-      background: linear-gradient(90deg, rgb(191, 168, 255), rgb(255, 169, 209));
-
-      &:hover {
-        @apply border-b-4 border-t-4 border-pink-600;
-      }
+      @apply h-12 flex items-center transition transition-all duration-200 text-gray-800;
+      color: var(--text);
+      background: var(--bg-header);
+      box-shadow: 0 0 10px #00000055;
     }
 
     .links-bar {
@@ -309,16 +307,6 @@ export default {
     }
     .stream-announcement {
       background: linear-gradient(90deg, rgb(0, 47, 255), rgb(0, 112, 0));
-    }
-    .burger-menu-list {
-      li {
-        @apply bg-megadark border-blue-800 text-white;
-        background: linear-gradient(90deg, rgb(39, 0, 145), rgb(128, 0, 60));
-
-        &:hover {
-          @apply border-b-4 border-t-4 border-pink-600;
-        }
-      }
     }
   }
 
