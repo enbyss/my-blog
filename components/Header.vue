@@ -11,6 +11,7 @@
       <!-- Links to other pages. -->
       <div v-if="!mobile">
         <NuxtLink class="header-link" id="content-link" to="/content">Content</NuxtLink>
+        <NuxtLink class="header-link" id="support-link" to="/support">Support</NuxtLink>
         <NuxtLink class="header-link" id="tools-link" to="/tools">Tools</NuxtLink>
       </div>
 
@@ -66,6 +67,9 @@
         class="burger-menu-list transform origin-top absolute w-full bg-gray-100 text-gray-700 dark:bg-megadark dark:text-white font-bold text-2xl">
         <li>
           <NuxtLink class="block w-full px-5" to="/content">Content</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink class="block w-full px-5" to="/support">Support</NuxtLink>
         </li>
         <li>
           <NuxtLink class="block w-full px-5" to="/tools">Tools</NuxtLink>
@@ -249,6 +253,10 @@ export default {
 
   #content-link:hover {
     @apply bg-blue-300 text-blue-800;
+  }
+
+  #support-link:hover {
+    @apply bg-purple-300 text-purple-800;
   }
 
   #tools-link:hover {

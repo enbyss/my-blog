@@ -36,20 +36,30 @@
 
 .mode-light {
   --bg: linear-gradient(var(--warm1), var(--passion1)) no-repeat fixed;
+  --looping-bg: linear-gradient(var(--warm1), var(--passion1), var(--warm1), var(--passion1));
   --text: var(--gray6);
   --bg-header: linear-gradient(90deg, var(--warm3), var(--passion3)) no-repeat fixed;
   --bg-ticker: linear-gradient(90deg, var(--warm2), var(--passion2)) no-repeat fixed;
   --title-bg: linear-gradient(to left, var(--warm6), var(--passion6));
   --main-colour: var(--gray0);
   --secondary-colour: var(--gray6);
+  --emphasis-text-colour: var(--warm5);
+  --main-passion: var(--passion5);
+  --main-warm: var(--warm5);
+  --main-rested: var(--rested5);
 }
 
 .mode-dark {
   --bg: linear-gradient(var(--warm6), var(--passion6)) no-repeat fixed;
+  --looping-bg: linear-gradient(var(--warm6), var(--passion6), var(--warm6), var(--passion6));
   --text: var(--gray1);
   --bg-header: linear-gradient(90deg, var(--warm4), var(--passion4)) no-repeat fixed;
   --bg-ticker: linear-gradient(90deg, var(--warm5), var(--passion5)) no-repeat fixed;
   --title-bg: linear-gradient(to left, var(--warm1), var(--passion1));
   --main-colour: var(--gray6);
   --secondary-colour: var(--gray0);
+  --emphasis-text-colour: var(--warm2);
+  --main-passion: var(--passion2);
+  --main-warm: var(--warm2);
+  --main-rested: var(--rested2);
 }
