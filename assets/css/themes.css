@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
+:root {
+  --gray0: #f8f8f8;
+  --gray1: #dbe1e8;
+  --gray2: #b2becd;
+  --gray3: #6c7983;
+  --gray4: #454e56;
+  --gray5: #2a2e35;
+  --gray6: #12181b;
+
+  --rested6: #b499ff;
+  --rested6: #8f66ff;
+  --rested6: #5f25ff;
+  --rested6: #3500c7;
+  --rested6: #230085;
+  --rested6: #140049;
+
+  --warm1: #ffd392;
+  --warm2: #ffbc58;
+  --warm3: #ffa723;
+  --warm4: #dd8500;
+  --warm5: #a16100;
+  --warm6: #5f3900;
+
+  --passion1: #ff9ece;
+  --passion2: #ff57ab;
+  --passion3: #ff168a;
+  --passion4: #e20071;
+  --passion5: #920049;
+  --passion6: #4e0027;
+
+  --main-font: "Jost";
+  --icon-font: "Krona One";
+}
+
+.mode-light {
+  --bg: linear-gradient(var(--warm1), var(--passion1)) no-repeat fixed;
+  --text: var(--gray6);
+  --bg-header: linear-gradient(90deg, var(--warm3), var(--passion3)) no-repeat fixed;
+  --bg-ticker: linear-gradient(90deg, var(--warm2), var(--passion2)) no-repeat fixed;
+  --title-bg: linear-gradient(to left, var(--warm6), var(--passion6));
+  --main-colour: var(--gray0);
+  --secondary-colour: var(--gray6);
+}
+
+.mode-dark {
+  --bg: linear-gradient(var(--warm6), var(--passion6)) no-repeat fixed;
+  --text: var(--gray1);
+  --bg-header: linear-gradient(90deg, var(--warm4), var(--passion4)) no-repeat fixed;
+  --bg-ticker: linear-gradient(90deg, var(--warm5), var(--passion5)) no-repeat fixed;
+  --title-bg: linear-gradient(to left, var(--warm1), var(--passion1));
+  --main-colour: var(--gray6);
+  --secondary-colour: var(--gray0);
+}

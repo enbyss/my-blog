@@ -8,7 +8,7 @@
     <div class="text-md">
       Check the header for different pages!
     </div>
-    <p>
+    <p> 
       Here are links to some of the stuff I do. Any subs/follows/patronage is <i>heavily</i> appreciated! Someday I'll put more stuff on this page.
     </p>
     <p class="icon-bar">

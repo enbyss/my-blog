@@ -1,7 +1,7 @@
 <template>
   <div>
-    <header class="transition duration-200 w-full bg-white border-b-2 dark:border-blue-700
-                  flex justify-center h-16 items-center border-gray-200
+    <header class="transition duration-200 w-full
+                  flex justify-center h-16 items-center
                   dark:text-white">
       <NuxtLink class="flex items-center main-link mr-5" :class="{'ml-5 mr-auto' : mobile}" to="/">
         <img src="~/assets/images/icon.png" class="w-10 h-10 mr-2 shadow-2xl rounded-full" style="box-shadow: 0 0 10px #3e8eff;"/>
@@ -28,7 +28,7 @@
           <a id="patreon-icon" href="https://www.patreon.com/ENBYSS"><font-awesome-icon :icon="['fab', 'patreon']" /></a>
         </span>
 
-        <button class="transition duration-200 dark-hover:bg-gray-800 hover:bg-gray-200 w-10 h-10 rounded-full text-xl" @click="toggleDarkMode()">
+        <button class="transition duration-200 theme-switcher w-10 h-10 rounded-full text-xl" @click="toggleDarkMode()">
           <font-awesome-icon v-if="!darkMode" :icon="['fas', 'sun']" />
           <font-awesome-icon v-if="darkMode" :icon="['fas', 'moon']" />
         </button>
@@ -125,12 +125,14 @@ export default {
   },
   watch: {
     darkMode() {
-      if(this.darkMode){
-        document.documentElement.classList.add("mode-dark");
-      }
-      else {
-        document.documentElement.classList.remove("mode-dark");
-      }
+    if(this.darkMode){
+      document.documentElement.classList.add("mode-dark");
+      document.documentElement.classList.remove("mode-light");
+    }
+    else {
+      document.documentElement.classList.add("mode-light");
+      document.documentElement.classList.remove("mode-dark");
+    }
     }
   },
   created() {
@@ -155,8 +157,10 @@ export default {
   mounted() {
     if(this.darkMode){
       document.documentElement.classList.add("mode-dark");
+      document.documentElement.classList.remove("mode-light");
     }
     else {
+      document.documentElement.classList.add("mode-light");
       document.documentElement.classList.remove("mode-dark");
     }
 
@@ -171,6 +175,7 @@ export default {
 <style scoped lang="scss">
   @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
   .stream-announcement {
     background: linear-gradient(90deg, rgb(103, 232, 255), rgb(204, 255, 109));
@@ -197,11 +202,15 @@ export default {
   }
 
   .title-word {
-    font-family: 'Knewave';
+    font-family: var(--icon-font);
     background-image: linear-gradient(to left, rgb(55, 0, 255), rgb(146, 0, 85));
     -webkit-background-clip: text;
     color: transparent;
     filter: drop-shadow(0 0 4px crimson);
+  }
+
+  .title-word {
+    background-image: var(--title-bg);
   }
 
   .ticker-scroll {
@@ -216,24 +225,13 @@ export default {
     @apply transition duration-200 rounded-full w-10 h-10 text-xl p-2 inline-flex items-center flex-row;
   }
 
+  .icon-bar > a:hover, .theme-switcher:hover {
+    background: var(--secondary-colour);
+    color: var(--main-colour);
+  }
+
   .icon-bar > a svg {
     @apply w-6 h-6;
-  }
-
-  #twitter-icon:hover {
-    background: #1DA1F2;
-  }
-
-  #youtube-icon:hover {
-    background: red;
-  }
-
-  #twitch-icon:hover {
-    background: #6441A4;
-  }
-
-  #patreon-icon:hover {
-    background: #ff6a06;
   }
 
   .live-on-twitch {
@@ -291,16 +289,19 @@ export default {
     }
   }
 
+  header {
+    background: var(--bg-header);
+  }
+
+  .ticker-thing {
+    background: var(--bg-ticker);
+    box-shadow: 0 0 5px #00000088;
+  }
+
   // Dark mode theming
   .mode-dark {
-    header {
-      background: linear-gradient(90deg, rgb(68, 0, 255), rgb(255, 0, 119))
-    }
     .header-link {
       background: #00000055;
-    }
-    .title-word {
-      background-image: linear-gradient(to left, rgb(255, 153, 0), rgb(255, 0, 149));
     }
     #streamTitle {
       background-image: linear-gradient(to left, rgb(91, 255, 132), rgb(52, 133, 255));
@@ -308,10 +309,6 @@ export default {
     }
     .stream-announcement {
       background: linear-gradient(90deg, rgb(0, 47, 255), rgb(0, 112, 0));
-    }
-    .ticker-thing {
-      background: linear-gradient(90deg, rgb(40, 0, 150), rgb(133, 0, 62));
-      box-shadow: 0 0 5px #00000088;
     }
     .burger-menu-list {
       li {
@@ -323,11 +320,6 @@ export default {
         }
       }
     }
-  }
-
-  // Light mode theming
-  header {
-    background: linear-gradient(90deg, rgb(156, 120, 255), rgb(255, 120, 183))
   }
 
 .scroll-left > div {

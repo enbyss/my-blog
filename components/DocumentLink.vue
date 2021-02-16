@@ -42,10 +42,11 @@ export default {
 
 <style lang="scss" scoped>
 .document-link {
-  @apply rounded-2xl text-left shadow-xl border-4 border-pink-500 transition duration-200;
-  background: linear-gradient(90deg, #ff6397, #8f63ff);
+  @apply rounded-2xl text-left transition duration-200;
+  background: var(--bg-header);
   width: 300px;
   overflow: hidden;
+  box-shadow: 0 0 20px var(--secondary-colour);
 
   &:hover {
     @apply border-pink-800 transform scale-110;
@@ -64,7 +65,7 @@ export default {
   }
   .tag {
     @apply py-1 px-2 m-1 rounded-xl;
-    background: linear-gradient(90deg, #ff276f, #5c1cff);
+    background: var(--bg-header);
     color: white;
   }
   h3 {
@@ -74,10 +75,6 @@ export default {
 }
 
 .mode-dark {
-  .document-link {
-    background: linear-gradient(90deg, #ff276f, #5c1cff);
-  }
-
   h2 {
     @apply px-3 py-1;
     background: rgba(0,0,0,0.5);

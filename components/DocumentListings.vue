@@ -85,7 +85,6 @@ li {
 
   &:hover {
     transform: scale(2);
-    color: rgb(140, 0, 255);
   }
 }
 </style>

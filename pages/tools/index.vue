@@ -84,6 +84,7 @@ export default {
   background: linear-gradient(90deg, rgb(255, 29,0), rgb(255, 136, 0), rgb(255, 29,0), rgb(255, 136, 0));
   background-size: 300% 100%;
   animation: animateBg 5s infinite linear;
+  overflow: hidden;
 
   h1 {
     font-size: 24pt;
