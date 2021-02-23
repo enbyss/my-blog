@@ -33,7 +33,7 @@
     "patreon": "^0.4.1",
     "prism-themes": "^1.5.0",
     "reading-time": "^1.2.1",
-    "sharp": "^0.26.3",
+    "sharp": "^0.27.2",
     "tailwindcss-dark-mode": "^1.1.7"
   },
   "devDependencies": {
